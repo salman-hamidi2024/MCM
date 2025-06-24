@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+
+
+{% block content %}
+<h1>جزئیات حامی: {{ object }}</h1>  
+    <h2>افراد حمایت شده:</h2>  
+
+    <form method="post" action="{% url 'support-create' %}">  
+        {% csrf_token %}  
+        <input type="hidden" name="supporter" value="{{ object.pk }}">  
+        <input type="hidden" name="is_active" value="true">  
+         <div class="relative z-0 w-full mb-2 group pl-4">
+            <label for="search-national-id" class="block mb-2 vazir-normal text-sm font-medium text-gray-900">جستجوی کودک بر اساس شماره ملی:</label>  
+            <input type="text" id="search-national-id" name="national_id" class="bg-gray-50 border border-gray-300 text-gray-900 vazir-normal text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2" required>  
+        </div>
+        <button type="submit" class="text-white bg-green-700 hover:bg-green-800 cursor-pointer focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 ">جستجو</button>  
+    </form>  
+
+    <h3>نتایج جستجو:</h3>  
+    <div id="search-results">  
+        {% if searched_person %}  
+            <p>کودک پیدا شد: <strong>{{ searched_person }}</strong></p>  
+            <form method="post" action="{% url 'support-create' %}">  
+                {% csrf_token %}  
+                <input type="hidden" name="supporter" value="{{ object.pk }}">  
+                <input type="hidden" name="person" value="{{ searched_person.pk }}">  
+                <input type="hidden" name="amount" value="1000000">  <!-- Default amount; adjust as needed -->  
+                <input type="hidden" name="is_active" value="true">  
+                <button type="submit">اضافه کردن به حمایت</button>  
+            </form>  
+        {% else %}  
+            <p>کودکی با شماره ملی مورد نظر یافت نشد.</p>  
+        {% endif %}  
+    </div>  
+
+    <h3>لیست کودکان حمایت شده:</h3>  
+    <ul>  
+        {% for support in object.supports.all %}  
+            <li>{{ support.person }} - مبلغ: {{ support.amount }} | تاریخ: {{ support.support_date }}</li>  
+        {% empty %}  
+            <li>هیچ حمایتی ثبت نشده است.</li>  
+        {% endfor %}  
+    </ul>  
+
+    <a href="{% url 'supporter-list' %}">بازگشت به لیست حامیان</a> 
+
+
+{% endblock content%}

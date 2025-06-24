@@ -1,0 +1,55 @@
+{% extends "base.html" %}  
+{% load form_filters %}
+
+{% block content %}  
+<h2 class="vazir-semibold text-xl py-5">{% if person %}ویرایش عضو خانواده{% else %}افزودن عضو جدید خانواده{% endif %}</h2>
+<div>  
+<form method="post" class="vazir-normal text-sm">  
+    {% csrf_token %}
+<div class="flex">
+    <div class="relative z-0 w-full mb-2 group pl-4">
+        <label for="{{ form.family.id_for_label }}" class="block mb-2 vazir-normal text-sm font-medium text-gray-900" >{{ form.family.label }}</label>
+        {{ form.family|add_class:'bg-gray-50 border border-gray-300 text-gray-900 vazir-normal text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2'}}
+    </div>
+    <div class="relative z-0 w-full mb-2 group pr-4">
+        <label for="{{ form.national_id.id_for_label }}" class="block mb-2 vazir-normal text-sm font-medium text-gray-900" >{{ form.national_id.label }}</label>
+        {{ form.national_id|add_class:'bg-gray-50 border border-gray-300 text-gray-900 vazir-normal text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2'}}
+    </div>
+</div>
+<div class="flex pt-3">
+    <div class="relative z-0 w-full mb-2 group pl-4">
+        <label for="{{ form.first_name.id_for_label }}" class="block mb-2 vazir-normal text-sm font-medium text-gray-900" >{{ form.first_name.label }}</label>
+        {{ form.first_name|add_class:'bg-gray-50 border border-gray-300 text-gray-900 vazir-normal text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2'}}
+    </div>
+    <div class="relative z-0 w-full mb-2 group pr-4">
+        <label for="{{ form.last_name.id_for_label }}" class="block mb-2 vazir-normal text-sm font-medium text-gray-900" >{{ form.last_name.label }}</label>
+        {{ form.last_name|add_class:'bg-gray-50 border border-gray-300 text-gray-900 vazir-normal text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2'}}
+    </div>
+</div>
+<div class="flex pt-3">
+    <div class="relative z-0 w-full mb-2 group pl-4">
+        <label for="{{ form.father_name.id_for_label }}" class="block mb-2 vazir-normal text-sm font-medium text-gray-900" >{{ form.father_name.label }}</label>
+        {{ form.father_name|add_class:'bg-gray-50 border border-gray-300 text-gray-900 vazir-normal text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2'}}
+    </div>
+    <div class="relative z-0 w-full mb-2 group pr-4">
+        <label for="{{ form.birth_date.id_for_label }}" class="block mb-2 vazir-normal text-sm font-medium text-gray-900" >{{ form.birth_date.label }}</label>
+        {{ form.birth_date|add_class:'bg-gray-50 border border-gray-300 text-gray-900 vazir-normal text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2'}}
+    </div>
+</div>
+<div class="flex pt-3">
+    <div class="relative z-0 w-full mb-2 group pl-4">
+        <label for="{{ form.is_orphan.id_for_label }}" class="block mb-2 vazir-normal text-sm font-medium text-gray-900" >{{ form.is_orphan.label }}</label>
+        {{ form.is_orphan|add_class:'bg-gray-50 border border-gray-300 text-gray-900 vazir-normal text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2'}}
+    </div>
+    <div class="relative z-0 w-full mb-2 group pr-4">
+        <label for="{{ form.is_active.id_for_label }}" class="block mb-2 vazir-normal text-sm font-medium text-gray-900" >{{ form.is_active.label }}</label>
+        {{ form.is_active|add_class:'bg-gray-50 border border-gray-300 text-gray-900 vazir-normal text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2'}}
+    </div>
+</div>
+  
+      
+<button type="submit" class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 ">ذخیره</button> 
+</form>
+</div>  
+<a href="{% url 'family_detail' family_id %}"><button type="button" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 ">انصراف</button></a>  
+{% endblock %} 

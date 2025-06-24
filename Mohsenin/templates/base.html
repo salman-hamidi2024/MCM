@@ -1,0 +1,55 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html dir="rtl" lang="IR-fa">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block  title %}{% endblock  %}</title>
+
+    <link href="{% static 'css/helper.css'%}" rel="stylesheet" />
+    <link href="{% static 'flowbite/flowbite.min.css'%}" rel="stylesheet" />
+    <link href="{% static 'fontstyle/vazir.css'%}" rel="stylesheet" />
+    <link href="{% static 'fontstyle/gulzar.css'%}" rel="stylesheet" />
+    <link href="{% static 'css/dataTables.min.css'%}" rel="stylesheet" />
+    <style>
+        body{
+            -webkit-print-color-adjust:exact !important;
+            print-color-adjust:exact !important;
+          }
+
+    </style>
+
+    
+</head>
+
+<body class="flex flex-col h-screen bg-green-50">
+    <div class="container mx-auto">
+        {% include "layout/navbar.html" %}
+    
+
+        <div class="flex flex-1">
+        {% include "layout/sidebar.html"%}
+            <div class="flex-1">
+                <div class="pr-5">
+            {% block content %}
+
+            {% endblock content %}
+                <div>
+                   
+            </div>
+       
+        </div>
+
+    </div>
+
+    <script src="{% static 'flowbite/flowbite.min.js'%}"></script>
+    <script src="{% static 'js/dataTables.min.js'%}"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+
+
+{% block content %} 
+<div class="py-5 vazir-medium no-print">
+<button type="button" class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"><a href="{% url 'dist_create' %}">افزودن لیست توزیع جدید</a></button>
+</div>
+<h2 class="vazir-semibold text-xl">لیست های توزیع</h2>
+ 
+ 
+<div class="relative overflow-x-auto shadow-lg sm:rounded-lg border border-gray-700">
+    <table class="w-full text-sm rtl:text-right text-gray-700 bg-white rounded-lg overflow-hidden"> 
+        <thead class="text-xs text-gray-700 uppercase bg-gray-700 text-white"> 
+    <tr class='vazir-semibold'>  
+        <th scope="col" class="px-6 py-3 text-end">نام لیست</th>  
+        <th scope="col" class="px-6 py-3 text-right">تعداد خانواده ها</th>
+        <th scope="col" class="px-6 py-3 text-right">توضیحات</th>
+        <th scope="col" class="px-6 py-3 text-right">عملیات</th>
+ 
+    </tr>
+</thead>
+<tbody>  
+    {% for dist in dists %}  
+    <tr class="{% if forloop.counter|divisibleby:2 %}bg-white{% else %}bg-indigo-50{% endif %} border-b  border-gray-200 hover:bg-gray-50  vazir-normal">  
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">{{ dist.name }}</th>  
+        <td class="px-6 py-4">{{ dist.familycount }}</td>
+        <td class="px-6 py-4">{{ dist.note }}</td>  
+  
+        <td  class="px-6 py-4 no-print">
+        <div class="flex space-x-1">
+        <a href="{% url 'dist_detail' dist.pk %}" class="text-green-700 text-sm"><svg class="w-[23px] h-[23px] text-green-700" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M3 4.92857C3 3.90506 3.80497 3 4.88889 3H19.1111C20.195 3 21 3.90506 21 4.92857V13h-3v-2c0-.5523-.4477-1-1-1h-4c-.5523 0-1 .4477-1 1v2H3V4.92857ZM3 15v1.0714C3 17.0949 3.80497 18 4.88889 18h3.47608L7.2318 19.3598c-.35356.4243-.29624 1.0548.12804 1.4084.42428.3536 1.05484.2962 1.40841-.128L10.9684 18h2.0632l2.2002 2.6402c.3535.4242.9841.4816 1.4084.128.4242-.3536.4816-.9841.128-1.4084L15.635 18h3.4761C20.195 18 21 17.0949 21 16.0714V15H3Z"/>
+                <path d="M16 12v1h-2v-1h2Z"/>
+              </svg>
+              </a>    
+            <a href="{% url 'dist_update' dist.pk %}" class="text-blue-700 text-sm"><svg class="w-6 h-6 text-blue-700" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"/>
+              </svg>              
+              </a>  
+            <a href="{% url 'dist_delete' dist.pk %}"class="text-red-700 text-sm"><svg class="w-6 h-6 text-red-700" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd" d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z" clip-rule="evenodd"/>
+              </svg>
+              </a>
+            </div>  
+        </td>  
+    </tr>  
+    {% endfor %}
+</tbody>  
+</table>
+</div>
+{% endblock %}

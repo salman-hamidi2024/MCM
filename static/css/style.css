@@ -1,0 +1,13 @@
+.cancel-modal-1 {
+      position: relative;
+      top: -60px;
+      right: -170px;
+      color: white;
+      font-size: 20px;
+      background-color: #ffffff7a;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: inline-block;
+      cursor: pointer;
+}

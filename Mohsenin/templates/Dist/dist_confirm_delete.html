@@ -1,0 +1,20 @@
+
+{% extends "base.html" %}  
+
+{% block content %}
+<h2 class="vazir-semibold pt-10 text-2xl">فرم حذف لیست توزیع</h2>  
+<h2 class="vazir-semibold text-xl">آیا از حذف کردن این لیست توزیع اطمینان دارید اطمینان دارید؟</h2>
+<h4 class="vazir-light text-sm">در صورت حذف کردن لیست خانواده، کلیه خانواده‌های عضو فاقد لیست توزیع خواهند شد.</h4>
+<h3 class="vazir-medium text-lg">نام لیست توزیع: {{dist.name }}</h3>
+<h3 class="vazir-medium text-lg">تعداد خانواده عضو لیست: {{dist.familycount }}</h3>  
+
+
+
+<div class="inline-flex rounded-md shadow-xs  vazir-normal no-print" role="group">
+    <form method="post"> {% csrf_token %}
+      <button type="submit" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">بله اطمینان دارم</button>
+    <a href="{% url 'dist_list' %}">
+      <button type="button" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">انصراف</button>
+    </a>
+  </div>
+  {% endblock %} 
