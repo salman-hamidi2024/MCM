@@ -28,7 +28,7 @@ class SupportListView(generic.ListView):
 class SupportCreateView(generic.CreateView):  
     model = Support  
     template_name = 'Support/support_form.html'  # Create this template  
-    fields = ['supporter', 'person', 'amount', 'is_active']  
+    fields = ['supporter', 'person', 'amount', 'is_active']
 
     def form_valid(self, form):  
         # Optionally, you can customize this method  
@@ -53,7 +53,7 @@ class SupporterDetailView(generic.DetailView):
             if supporter.supports_orphans_only and not searched_person.is_orphan:  
                 # If not an orphan, handle the case accordingly (maybe redirect with an error)  
                 return redirect('supporter-detail', pk=supporter.pk)  
-
+            
             # Render detail with the found person  
             return self.render_to_response({'object': supporter, 'searched_person': searched_person})  
         
