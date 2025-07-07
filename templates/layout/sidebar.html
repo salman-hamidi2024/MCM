@@ -28,6 +28,15 @@
           </svg>
           <a href="{% url "supporter-list" %}" class="text-white hover:underline vazir-normal">طرح های کمک ماهیانه به کودکان</a>
         </li>
+
+        {% if user.is_superuser %}
+          <li class="mb-2 flex">
+            <svg class="w-6 h-6 text-gray-800 dark:text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M4 6h2v2H4V6zm0 5h2v2H4v-2zm0 5h2v2H4v-2zm4-10h12v2H8V6zm0 5h12v2H8v-2zm0 5h12v2H8v-2z"/>
+            </svg>
+            <a href="{% url "family_type_list" %}" class="text-white hover:underline vazir-normal">مدیریت دسته بندی خانواده ها</a>
+          </li>
+        {% endif %}
        
           
     </ul>  

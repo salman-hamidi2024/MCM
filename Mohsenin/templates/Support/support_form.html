@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+
+
+
+{% block content %}
+
+<h1 class="vazir-semibold text-center text-xl py-5">نتایج یافت شده:</h1>
+
+<div class="max-w-4xl mx-auto p-6 bg-white rounded-xl shadow-md space-y-6">
+ <div class="flex flex-wrap gap-12 justify-center">
+
+ {% for support in supports %}
+  <!-- هر کارت -->
+  <div class="w-80 flex flex-col gap-2 border border-gray-200 rounded-lg pb-4 pr-4 pl-4 shadow-sm hover:shadow-md transition">
+    <div class="w-full bg-gray-800 text-white text-right px-4 py-2 rounded-t-lg">
+      حامی : {{ support.supporter }}
+    </div>
+    <h3 class="text-gray-800 font-semibold text-lg">اسم: علی محمدی</h3>
+    <p class="text-sm text-gray-700">قیمت: ۱٬۰۰۰٬۰۰۰ تومان</p>
+    <p class="text-sm text-gray-500">تاریخ: ۱۴۰۳/۰۴/۱۰</p>
+    <button type="submit"
+      class="text-white bg-gray-800 mt-2 hover:bg-gray-900 focus:outline-none cursor-pointer focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2">
+      اضافه کردن به حمایت
+    </button>
+  </div>
+ {% endfor %}
+  
+
+  
+  <div class="w-80 flex flex-col gap-2 border border-gray-200 rounded-lg pb-4 pr-4 pl-4 shadow-sm hover:shadow-md transition">
+    <div class="w-full bg-gray-800 text-white text-right px-4 py-2 rounded-t-lg">
+      حامی :
+    </div>
+    <h3 class="text-gray-800 font-semibold text-lg">اسم: علی محمدی</h3>
+    <p class="text-sm text-gray-700">قیمت: ۱٬۰۰۰٬۰۰۰ تومان</p>
+    <p class="text-sm text-gray-500">تاریخ: ۱۴۰۳/۰۴/۱۰</p>
+    <button type="submit"
+      class="text-white bg-gray-800 mt-2 hover:bg-gray-900 focus:outline-none cursor-pointer focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2">
+      اضافه کردن به حمایت
+    </button>
+  </div>
+
+  <div class="w-80 flex flex-col gap-2 border border-gray-200 rounded-lg pb-4 pr-4 pl-4 shadow-sm hover:shadow-md transition">
+    <div class="w-full bg-gray-800 text-white text-right px-4 py-2 rounded-t-lg">
+      حامی :
+    </div>
+    <h3 class="text-gray-800 font-semibold text-lg">اسم: علی محمدی</h3>
+    <p class="text-sm text-gray-700">قیمت: ۱٬۰۰۰٬۰۰۰ تومان</p>
+    <p class="text-sm text-gray-500">تاریخ: ۱۴۰۳/۰۴/۱۰</p>
+    <button type="submit"
+      class="text-white bg-gray-800 mt-2 hover:bg-gray-900 focus:outline-none cursor-pointer focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2">
+      اضافه کردن به حمایت
+    </button>
+  </div>
+
+  <div class="w-80 flex flex-col gap-2 border border-gray-200 rounded-lg pb-4 pr-4 pl-4 shadow-sm hover:shadow-md transition">
+    <div class="w-full bg-gray-800 text-white text-right px-4 py-2 rounded-t-lg">
+      حامی :
+    </div>
+    <h3 class="text-gray-800 font-semibold text-lg">اسم: علی محمدی</h3>
+    <p class="text-sm text-gray-700">قیمت: ۱٬۰۰۰٬۰۰۰ تومان</p>
+    <p class="text-sm text-gray-500">تاریخ: ۱۴۰۳/۰۴/۱۰</p>
+    <button type="submit"
+      class="text-white bg-gray-800 mt-2 hover:bg-gray-900 focus:outline-none cursor-pointer focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2">
+      اضافه کردن به حمایت
+    </button>
+  </div>
+
+  <div class="w-80 flex flex-col gap-2 border border-gray-200 rounded-lg pb-4 pr-4 pl-4 shadow-sm hover:shadow-md transition">
+    <div class="w-full bg-gray-800 text-white text-right px-4 py-2 rounded-t-lg">
+      حامی :
+    </div>
+    <h3 class="text-gray-800 font-semibold text-lg">اسم: علی محمدی</h3>
+    <p class="text-sm text-gray-700">قیمت: ۱٬۰۰۰٬۰۰۰ تومان</p>
+    <p class="text-sm text-gray-500">تاریخ: ۱۴۰۳/۰۴/۱۰</p>
+    <button type="submit"
+      class="text-white bg-gray-800 mt-2 hover:bg-gray-900 focus:outline-none cursor-pointer focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2">
+      اضافه کردن به حمایت
+    </button>
+  </div>
+
+  <div class="w-80 flex flex-col gap-2 border border-gray-200 rounded-lg pb-4 pr-4 pl-4 shadow-sm hover:shadow-md transition">
+    <div class="w-full bg-gray-800 text-white text-right px-4 py-2 rounded-t-lg">
+      حامی :
+    </div>
+    <h3 class="text-gray-800 font-semibold text-lg">اسم: علی محمدی</h3>
+    <p class="text-sm text-gray-700">قیمت: ۱٬۰۰۰٬۰۰۰ تومان</p>
+    <p class="text-sm text-gray-500">تاریخ: ۱۴۰۳/۰۴/۱۰</p>
+    <button type="submit"
+      class="text-white bg-gray-800 mt-2 hover:bg-gray-900 focus:outline-none cursor-pointer focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2">
+      اضافه کردن به حمایت
+    </button>
+  </div>
+
+
+  <!-- کارت‌های دیگر هم همین‌طور ... -->
+
+</div>
+
+
+</div>
+
+
+
+{% endblock content%}

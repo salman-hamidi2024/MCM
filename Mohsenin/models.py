@@ -2,6 +2,15 @@ from django.db import models
 
 from .choices import NEED_LEVEL_CHOICE, FAMILY_TYPE_CHOICES, ACTIVATION_CHOICE, YES_NO_CHOICE, SUPPORTING_CHOICE
 
+
+class Family_Type(models.Model):
+    name = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.name
+
+
+
 #لیست توزیع
 class Dist(models.Model): 
     name = models.CharField('نام لیست توزیع', max_length=100, unique=True)
@@ -17,7 +26,7 @@ class Dist(models.Model):
 class Family(models.Model):
     doc_code = models.IntegerField('شماره پرونده')
     need_level = models.IntegerField('سطح نیاز', default=1, choices=NEED_LEVEL_CHOICE)
-    family_type = models.IntegerField('نوع نیازمندی', default=1, choices=FAMILY_TYPE_CHOICES)
+    family_type = models.ForeignKey(Family_Type, verbose_name='نوع نیازمندی', on_delete=models.SET_NULL, null=True, blank=True)
     guardian = models.ForeignKey('Person', verbose_name='سرپرست خانوار', on_delete=models.SET_NULL, related_name='guardianship', null=True)
     address = models.CharField('آدرس',max_length=255)
     contact_number = models.CharField('شماره تماس',max_length=15, blank=True, null=True)

@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy 
 from ..models import Supporter, Support, Person
 from ..forms import SupporterForm  
+from django.http import HttpResponseBadRequest
 
 # List and Create Supporters  
 class SupporterListView(generic.ListView):  
@@ -28,11 +29,11 @@ class SupportListView(generic.ListView):
 class SupportCreateView(generic.CreateView):  
     model = Support  
     template_name = 'Support/support_form.html'  # Create this template  
-    fields = ['supporter', 'person', 'amount', 'is_active']  
+    fields = ['supporter', 'person', 'amount', 'is_active']
 
     def form_valid(self, form):  
         # Optionally, you can customize this method  
-        return super().form_valid(form)  
+        return super().form_valid(form) 
 
 # Detail View for a Specific Supporter  
 class SupporterDetailView(generic.DetailView):  
@@ -45,7 +46,7 @@ class SupporterDetailView(generic.DetailView):
         supporter = self.get_object()  
 
         # Search for the person by national_id  
-        searched_person = Person.objects.filter(national_id=national_id).first()  
+        searched_person = Person.objects.filter(national_id__icontains=national_id).first()  
 
         # If a person with that national_id is found  
         if searched_person:  
@@ -53,7 +54,7 @@ class SupporterDetailView(generic.DetailView):
             if supporter.supports_orphans_only and not searched_person.is_orphan:  
                 # If not an orphan, handle the case accordingly (maybe redirect with an error)  
                 return redirect('supporter-detail', pk=supporter.pk)  
-
+            
             # Render detail with the found person  
             return self.render_to_response({'object': supporter, 'searched_person': searched_person})  
         

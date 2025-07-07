@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+
+
+
+{% block content %}
+<div class="py-5 vazir-medium no-print">
+<button type="button" class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"><a href="{% url 'family_type_create' %}">افزودن دسته بندی جدید</a></button>
+</div>
+
+<h2 class="vazir-bold text-2xl">لیست دسته بندی ها</h2>
+ 
+ 
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm rtl:text-right text-gray-700 bg-white rounded-lg overflow-hidden"> 
+        <thead class="text-xs text-gray-700 uppercase bg-gray-700 text-white">  
+      <tr class='vazir-semibold'>  
+        <th scope="col" class="px-6 py-3 text-end">نامه دسته بندی</th>  
+        <th scope="col" class="px-6 py-3 text-right">تعداد خانواده ها</th>
+        <th scope="col" class="px-6 py-3 text-right">عملیات</th>
+      </tr>
+</thead>
+<tbody>
+    {% for family_type in family_types %}  
+    <tr class="border-b border-gray-200 hover:bg-gray-50  vazir-normal">  
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">{{ family_type.name }}</th>  
+        <td class="px-6 py-4">{{ type_count.family_type.value }}</td>
+
+  
+        <td  class="no-print">
+            <div class="flex space-x-1">    
+            <a href="{% url 'family_type_delete' family_type.pk %}"class="text-red-700 text-sm"><svg class="w-6 h-6 text-red-700" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd" d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z" clip-rule="evenodd"/>
+              </svg>
+            </a>
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"/>
+              </svg>
+            </a>  
+        </div>
+            </td>  
+    </tr>  
+    {% endfor %}
+</tbody>  
+</table>
+</div>
+{% endblock %}

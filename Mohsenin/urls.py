@@ -3,6 +3,7 @@ from . import views
 from . Views import familyviews
 from . Views import distviews
 from . Views import packageviews
+from . Views import family_type
 from . Views import supportviews #only for people support childs monthly (cash)
 urlpatterns = [
     #path(<'addres':str>, <function>, <name='name':str>)
@@ -48,6 +49,12 @@ urlpatterns = [
     path('support/<int:person_id>/', supportviews.SupportListView.as_view(), name='support-list'),  
     path('supporter/<int:pk>/deactive', supportviews.SupporterDeactiveView.as_view(), name="support-deactive"),
     path('support/new/', supportviews.SupportCreateView.as_view(), name='support-create'),  
+
+
+    #------- family type
+    path("family_type_list", family_type.Family_Type_List_View.as_view(), name="family_type_list"),
+    path("family_type_create", family_type.Family_Type_Ceate_View.as_view(), name="family_type_create"),
+    path("family_type_delete/<int:pk>", family_type.Family_Type_Delete_View.as_view(), name="family_type_delete"),
     
     
 ]
