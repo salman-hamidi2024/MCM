@@ -9,83 +9,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block  title %}{% endblock  %}</title>
-
+    <link href="{% static 'mohsenin.png'%}" rel="icon" />
     <link href="{% static 'css/helper.css'%}" rel="stylesheet" />
     <link href="{% static 'flowbite/flowbite.min.css'%}" rel="stylesheet" />
     <link href="{% static 'fontstyle/vazir.css'%}" rel="stylesheet" />
     <link href="{% static 'fontstyle/gulzar.css'%}" rel="stylesheet" />
     <link href="{% static 'css/dataTables.min.css'%}" rel="stylesheet" />
     <link href="{% static 'css/style.css'%}" rel="stylesheet" />
+
     <style>
-        body{
-            -webkit-print-color-adjust:exact !important;
-            print-color-adjust:exact !important;
-          }
-            /* استایل بک‌گراند مودال */
-        .modal-overlay {
-        display: none;
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.6);
-        justify-content: center;
-        align-items: center;
-        z-index: 999;
-        }
-
-        /* استایل خود مودال */
-        .modal-content {
-        background: white;
-        padding: 20px;
-        border-top: 50px solid ;
-        border-radius: 12px;
-        width: 100%;
-        max-width: 400px;
-        text-align: center;
-        box-shadow: 0 0 20px rgba(0,0,0,0.3);
-        }
-
-        .modal-header {
-        font-size: 1.4rem;
-        margin-bottom: 10px;
-        }
-
-        .modal-body {
-        margin-bottom: 20px;
-        }
-
-        .modal-footer button {
-        padding: 8px 16px;
-        margin: 5px;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        }
-
-        .btn-open {
-        padding: 10px 20px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        }
-
-        .btn-close {
-        background-color: #f44336;
-        color: white;
-        }
-
-        .btn-confirm {
-        background-color: #2196F3;
-        color: white;
-        }
+        
     </style>
 
     
 </head>
 
 <body class="flex flex-col h-screen bg-green-50">
-    <div class="container mx-auto">
+    <div class="container max-w-full">
         {% include "layout/navbar.html" %}
     
 
@@ -104,8 +44,10 @@
 
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script src="{% static 'flowbite/flowbite.min.js'%}"></script>
     <script src="{% static 'js/dataTables.min.js'%}"></script>
+    <script src="{% static 'js/charts.js'%}"></script>
 
 
 </body>

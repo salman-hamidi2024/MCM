@@ -3,6 +3,9 @@ from django.db import models
 from .choices import NEED_LEVEL_CHOICE, FAMILY_TYPE_CHOICES, ACTIVATION_CHOICE, YES_NO_CHOICE, SUPPORTING_CHOICE
 
 
+
+
+
 class Family_Type(models.Model):
     name = models.CharField(max_length=30)
 

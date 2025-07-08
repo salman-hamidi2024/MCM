@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View  
 from django.views.generic import ListView, CreateView, UpdateView
 from django.urls import reverse_lazy  
-from ..models import Family, Person
+from ..models import Family, Person, Family_Type
 from ..forms import FamilyForm, NewFamilyForm,PersonForm
 #------------ Family views
 class FamilyListView(ListView):  
@@ -31,6 +31,19 @@ class FamilyListView(ListView):
             queryset = queryset.filter(family_type=family_type)  
 
         return queryset 
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        queries = Family_Type.objects.all()
+        family_type_dict = {}
+        for query in queries:
+            count = 1
+            family_type_dict[query.name] = count
+            count += 1
+
+        context["family_type"] = family_type_dict
+        return context
+
     
 
 class FamilyCreateView(CreateView):  

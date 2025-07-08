@@ -9,13 +9,14 @@
 </div>
 
 <h2 class="vazir-bold text-2xl">لیست دسته بندی ها</h2>
+<br>
  
  
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-    <table class="w-full text-sm rtl:text-right text-gray-700 bg-white rounded-lg overflow-hidden"> 
+<div class="relative overflow-x-auto shadow-lg sm:rounded-lg border-none border-gray-700">
+<table style="width: 90%;margin: auto;" class="w-full text-sm rtl:text-right text-gray-700 bg-white rounded-lg overflow-hidden"> 
         <thead class="text-xs text-gray-700 uppercase bg-gray-700 text-white">  
       <tr class='vazir-semibold'>  
-        <th scope="col" class="px-6 py-3 text-end">نامه دسته بندی</th>  
+        <th scope="col" class="px-6 py-3 text-end">نام دسته بندی</th>  
         <th scope="col" class="px-6 py-3 text-right">تعداد خانواده ها</th>
         <th scope="col" class="px-6 py-3 text-right">عملیات</th>
       </tr>
@@ -24,7 +25,14 @@
     {% for family_type in family_types %}  
     <tr class="border-b border-gray-200 hover:bg-gray-50  vazir-normal">  
         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">{{ family_type.name }}</th>  
-        <td class="px-6 py-4">{{ type_count.family_type.value }}</td>
+        
+          <td class="px-6 py-4">
+            {% for key,val in type_count.items %}
+                  {% if key == family_type.name %}
+                    {{ val }}
+                  {% endif %}
+            {% endfor %}
+          </td>
 
   
         <td  class="no-print">

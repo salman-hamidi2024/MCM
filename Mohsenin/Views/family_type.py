@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect  
 from django.views import View  
+from django.db.models import Count
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy  
 from Mohsenin.models import Family_Type, Family
@@ -12,20 +13,16 @@ class Family_Type_List_View(ListView):
       template_name = "Family_types/family_type_list.html"
       model = Family_Type
       context_object_name = "family_types"
+      
+      
       def get_context_data(self, **kwargs):
             context = super().get_context_data(**kwargs)
-            families = Family.objects.all()
-            family_types = {}
-            for family in families:
-                  for family_type in Family_Type.objects.all():
-                        if family.family_type == family_type and not family_type.name in family_types:
-                              family_types[family_type.name] = 1
-                        elif family.family_type == family_type and family_type.name in family_types:
-                              family_types[family_type.name] += 1
-                        else:
-                              family_types[family_type.name] = 0
+            family_type_counts = Family_Type.objects.annotate(
+            family_count=Count('family')
+            ).values('name', 'family_count')
+            
+            family_types = {item['name']: item['family_count'] for item in family_type_counts}
             print(family_types)
-
             context['type_count'] = family_types
             return context
 

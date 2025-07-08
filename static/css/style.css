@@ -11,3 +11,125 @@
       display: inline-block;
       cursor: pointer;
 }
+body{
+-webkit-print-color-adjust:exact !important;
+print-color-adjust:exact !important;
+background: #C2FFC7;
+}
+/* استایل بک‌گراند مودال */
+.modal-overlay {
+display: none;
+position: fixed;
+inset: 0;
+background: rgba(0, 0, 0, 0.6);
+justify-content: center;
+align-items: center;
+z-index: 999;
+}
+
+/* استایل خود مودال */
+.modal-content {
+background: white;
+padding: 20px;
+border-top: 50px solid ;
+border-radius: 12px;
+width: 100%;
+max-width: 400px;
+text-align: center;
+box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+.modal-header {
+font-size: 1.4rem;
+margin-bottom: 10px;
+}
+
+.modal-body {
+margin-bottom: 20px;
+}
+
+.modal-footer button {
+padding: 8px 16px;
+margin: 5px;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+}
+
+.btn-open {
+padding: 10px 20px;
+background-color: #4CAF50;
+color: white;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+}
+
+.btn-close {
+background-color: #f44336;
+color: white;
+}
+
+.btn-confirm {
+background-color: #2196F3;
+color: white;
+}
+
+
+
+.custom-button {
+    background-image: linear-gradient(to right, #537D5D, #006769);
+    box-shadow: 0 0px 1px -3px rgba(83, 125, 93, 0.5), 0 4px 6px -2px rgba(0, 103, 105, 0.5);
+}
+.custom-button:hover {
+    background-image: linear-gradient(to bottom right, #537D5D, #006769);
+}
+.custom-button:focus {
+    box-shadow: 0 0 0 4px rgba(83, 125, 93, 0.3);
+}
+.dark .custom-button:focus {
+    box-shadow: 0 0 0 1px rgba(0, 103, 105, 0.8);
+}
+tr:nth-child(even){
+      background: #ddeb9dda;
+}
+
+.flex-options {
+      display: flex;
+      margin-right: 90px;
+      gap: 35px;
+
+}
+
+.flex-options select {
+      width: 100%;
+            
+}
+
+.one-select{
+      display: flex;
+      gap: 30px;
+}
+
+
+.lable{
+      flex-direction: column;
+      margin-top: 10px;
+}
+
+.labels {
+      display: flex;
+      gap: 5px;
+}
+
+.label-texts {
+      display: flow-root;
+}
+
+@media (max-width: 768px) {
+      .flex-options {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 600px;
+      }
+}
