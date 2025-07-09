@@ -2,20 +2,36 @@
 {% extends "base.html" %}  
 
 {% block content %}
-<h2 class="vazir-semibold pt-10 text-2xl">فرم حذف لیست توزیع</h2>  
-<h2 class="vazir-semibold text-xl">آیا از حذف کردن این لیست توزیع اطمینان دارید اطمینان دارید؟</h2>
-<h4 class="vazir-light text-sm">در صورت حذف کردن لیست خانواده، کلیه خانواده‌های عضو فاقد لیست توزیع خواهند شد.</h4>
-<h3 class="vazir-medium text-lg">نام لیست توزیع: {{dist.name }}</h3>
-<h3 class="vazir-medium text-lg">تعداد خانواده عضو لیست: {{dist.familycount }}</h3>
+<div class="flex justify-center" style="margin-top: 5rem;">
+  <div class="bg-white shadow-lg rounded-lg p-6 w-96">
+    {% if not dist.is_active %}
+    <h2 class="vazir-semibold text-2xl">آیا از حذف این لیست توزیع اطمینان دارید؟</h2>
+    {% else %}
+    <h2 class="vazir-semibold text-2xl">آیا از افزودن این لیست توزیع اطمینان دارید؟</h2>
+    {% endif %}
+    <h3 class="vazir-medium text-xl">نام لیست توزیع: {{ dist.name }}</h3>
+    <h3 class="vazir-medium text-xl">تعداد خانواده عضو لیست: {{ dist.familycount }}</h3>
+    <h4 class="color-red vazir-light text-sm">در صورت حذف کردن لیست خانواده، کلیه خانواده‌های عضو فاقد لیست توزیع خواهند شد.</h4>
 
-
-
-<div class="inline-flex rounded-md shadow-xs  vazir-normal no-print" role="group">
-    <form method="post"> {% csrf_token %}
-      <button type="submit" class="custom-button cursor-pointer text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 ">بله اطمینان دارم</button>
-    <a href="{% url 'dist_list' %}"><br>
-      <button type="button" class="cursor-pointer text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 ">انصراف</button>
-    </a>
+    <form method="post">
+      {% csrf_token %}
+      <div class="delete-buttons flex gap-4 mt-6">
+        <button
+          type="submit"
+          class="custom-button cursor-pointer text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+        >
+          بله اطمینان دارم
+        </button>
+        <a href="{% url 'dist_list' %}">
+          <button
+            type="button"
+            class="cursor-pointer text-white bg-red-800 hover:bg-red-900 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5"
+          >
+            انصراف
+          </button>
+        </a>
+      </div>
     </form>
   </div>
+</div>
   {% endblock %} 
