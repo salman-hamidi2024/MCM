@@ -37,11 +37,9 @@ class FamilyListView(ListView):
         queries = Family_Type.objects.all()
         family_type_dict = {}
         for query in queries:
-            count = 1
-            family_type_dict[query.name] = count
-            count += 1
-
-        context["family_type"] = family_type_dict
+            family_type_dict[query.name] = query.id
+        print(family_type_dict.items())
+        context["family_types"] = family_type_dict
         return context
 
     
@@ -61,7 +59,7 @@ class FamilyDetailView(View):
         context = {  
             'family': family,  
             'members': family.members.all()  # Access the members directly from the family instance  
-        }  
+        }
         return render(request, self.template_name, context)
     
 
@@ -140,3 +138,8 @@ def set_guardian(request, family_id, pk):
     family.save()
     return redirect('family_detail', pk=family_id)
 
+def active(request, pk):
+    family = Family.objects.get(id=pk)
+    family.is_active = True
+    family.save()
+    return redirect("family_list")

@@ -13,8 +13,12 @@
         {{ form.note|add_class:'bg-gray-50 border border-gray-300 text-gray-900 vazir-normal text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2'}}        
     </div>  
     {% comment %} {{ form.as_p }}   {% endcomment %}
-    <button type="submit" class="cursor-pointer text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 ">ذخیره</button>  
+    <div class="form-buttons">
+        <button type="submit" class="custom-button cursor-pointer text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 ">ذخیره</button>  
+        <a href="{% url 'dist_list' %}"><button type="button" class="cursor-pointer text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 ">انصراف</button></a>  
+        {% if dist %}
+        <a href="{% url 'dist_delete' dist.id %}"><button type="button" class="cursor-pointer text-white bg-red-800 hover:bg-red-900 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 ">حذف</button></a>  
+        {% endif %}
+    </div>
 </form>  
-<a href="{% url 'dist_list' %}"><button type="button" class="cursor-pointer text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 ">انصراف</button></a>  
-<a href="{% url 'dist_delete' dist.pk %}"><button type="button" class="cursor-pointer text-white bg-red-800 hover:bg-red-900 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 ">حذف</button></a>  
 {% endblock %} 

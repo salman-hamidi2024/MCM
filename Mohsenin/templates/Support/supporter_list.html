@@ -4,14 +4,14 @@
 
 {% block content %}
 <div class="py-5 vazir-medium no-print ">
-<a href="{% url 'supporter-create' %}"><button type="button" class="text-gray-900 bg-gradient-to-r cursor-pointer from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"> ایجاد حامی جدید  </button> </a>
+<a href="{% url 'supporter-create' %}"><button type="button" class="custom-button text-gray-900 bg-gradient-to-r cursor-pointer from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"> ایجاد حامی جدید  </button> </a>
 </div>
 
 <h2 class="vazir-bold text-2xl">لیست حامیان</h2>     
 <br> 
 
 
-<div class="relative overflow-x-auto shadow-lg sm:rounded-lg border-none border-gray-700">
+<div class="relative overflow-x-auto  sm:rounded-lg border-none border-gray-700">
 <table style="width: 90%;margin: auto;" class="w-full text-sm rtl:text-right text-gray-700 bg-white rounded-lg overflow-hidden"> 
     <thead class="text-xs text-gray-700 uppercase bg-gray-700 text-white"> 
     <tr class='vazir-semibold'>  
@@ -24,7 +24,7 @@
         <th scope="col" class="px-6 py-3 text-center no-print">عملیات</th>  
     </tr>
 </thead>
-<tbody>  
+<tbody class="table-content">  
     {% for supporter in Supporters %}  
     <tr class="{% if forloop.counter|divisibleby:2 %}bg-white{% else %}bg-indigo-50{% endif %} border-b border-gray-200 hover:bg-gray-50 vazir-normal">  
         <th scope="row" class="px-4 py-1 font-medium text-gray-900 whitespace-nowrap ">{{ supporter.name }}</th>  

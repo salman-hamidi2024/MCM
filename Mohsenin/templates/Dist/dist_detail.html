@@ -46,7 +46,7 @@
 
 
 <div class="py-5 vazir-medium no-print">
-<button type="button" class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+<button type="button" class="custom-button text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
 <a href="{% url 'families_without_dist' pk=dist.pk %}">افزودن خانواده از لیست خانواده های فاقد لیست توزیع</a>
 </button>
 </div>
@@ -64,7 +64,7 @@
         <th scope="col" class="px-6 py-3 text-right">شماره تماس</th>  
     </tr>
 </thead>
-<tbody>  
+<tbody class="table-content">  
     {% for family in families %}  
     <tr class="{% if forloop.counter|divisibleby:2 %}bg-white{% else %}bg-indigo-50{% endif %} border-b border-gray-200 hover:bg-gray-50 vazir-normal">  
         <th scope="row" class="px-4 py-1 font-medium text-gray-900 whitespace-nowrap ">{{ family.doc_code }}</th>  

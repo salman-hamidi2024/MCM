@@ -75,11 +75,17 @@ background-color: #2196F3;
 color: white;
 }
 
-
-
+.container-main {
+      background: #C2FFC7;
+}
+.form-buttons{
+      margin: 10px;
+}
 .custom-button {
+    /* background-image: linear-gradient(to right, #61a16b, #11755c); */
     background-image: linear-gradient(to right, #537D5D, #006769);
-    box-shadow: 0 0px 1px -3px rgba(83, 125, 93, 0.5), 0 4px 6px -2px rgba(0, 103, 105, 0.5);
+    box-shadow: 0 0px 1px -3px lab(48.63% -21.79 12.91 / 0.5), 0 4px 6px -2px rgba(0, 103, 105, 0.5);
+    color: #fff;
 }
 .custom-button:hover {
     background-image: linear-gradient(to bottom right, #537D5D, #006769);
@@ -90,7 +96,7 @@ color: white;
 .dark .custom-button:focus {
     box-shadow: 0 0 0 1px rgba(0, 103, 105, 0.8);
 }
-tr:nth-child(even){
+.table-content tr:nth-child(even){
       background: #ddeb9dda;
 }
 
@@ -132,4 +138,11 @@ tr:nth-child(even){
             flex-wrap: wrap;
             max-width: 600px;
       }
+}
+table{
+      width: 90%;
+}
+form {
+      margin: auto;
+      width: 90%;
 }

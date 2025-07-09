@@ -24,6 +24,7 @@ urlpatterns = [
     path('families/<int:pk>/', familyviews.FamilyDetailView.as_view(), name='family_detail'),  
     path('families/<int:pk>/update/', familyviews.FamilyUpdateView.as_view(), name='family_update'),  
     path('families/<int:pk>/deactivate/', familyviews.FamilyDeactivateView.as_view(), name='family_deactivate'),
+    path('families/<int:pk>/active/', familyviews.active, name="active_family"),
 
     #------ Person
     #path('families/<int:family_id>/members/', views.PersonListView.as_view(), name='person_list'),  
