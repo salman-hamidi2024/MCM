@@ -5,64 +5,64 @@
 
 
 {% block content %}
-<div class="container container-main w-full mx-auto p-4 sm:p-6 bg-gray-100 font-sans max-w-7xl">
+<div class="container container-main w-full mx-auto p-4 sm:p-6 bg-gray-100 font-sans ">
     <div class="flex flex-wrap gap-4 sm:gap-6 justify-center">
         <!-- Chart 1: Family Type Distribution -->
-        <div class="bg-white p-4 sm:p-6 rounded-lg shadow-lg flex-1 min-w-[250px] sm:min-w-[300px] max-w-[400px] min-h-[300px] flex flex-col">
+        <div class="bg-white p-4 sm:p-6 rounded-lg shadow-lg flex-1 min-w-[250px] sm:min-w-[150px] max-w-[350px] min-h-[300px] flex flex-col">
             <h2 class="text-lg sm:text-xl font-semibold mb-4 text-center">توزیع خانواده‌ها بر اساس نوع نیازمندی</h2>
             <canvas id="familyTypeChart" class="flex-grow"></canvas>
         </div>
 
         <!-- Chart 2: Need Level Distribution -->
-        <div class="bg-white p-4 sm:p-6 rounded-lg shadow-lg flex-1 min-w-[250px] sm:min-w-[300px] max-w-[400px] min-h-[300px] flex flex-col">
+        <div class="bg-white p-4 sm:p-6 rounded-lg shadow-lg flex-1 min-w-[250px] sm:min-w-[150px] max-w-[350px] min-h-[300px] flex flex-col">
             <h2 class="text-lg sm:text-xl font-semibold mb-4 text-center">توزیع خانواده‌ها بر اساس سطح نیاز</h2>
             <canvas id="needLevelChart" class="flex-grow"></canvas>
         </div>
 
         <!-- Chart 3: Families per Dist List -->
-        <div class="bg-white p-4 sm:p-6 rounded-lg shadow-lg flex-1 min-w-[250px] sm:min-w-[300px] max-w-[400px] min-h-[300px] flex flex-col">
+        <div class="bg-white p-4 sm:p-6 rounded-lg shadow-lg flex-1 min-w-[250px] sm:min-w-[150px] max-w-[350px] min-h-[300px] flex flex-col">
             <h2 class="text-lg sm:text-xl font-semibold mb-4 text-center">تعداد خانواده‌ها در هر لیست توزیع</h2>
             <canvas id="distListChart" class="flex-grow"></canvas>
         </div>
 
         <!-- Chart 4: Orphans per Family -->
-        <div class="bg-white p-4 sm:p-6 rounded-lg shadow-lg flex-1 min-w-[250px] sm:min-w-[300px] max-w-[400px] min-h-[300px] flex flex-col">
+        <div class="bg-white p-4 sm:p-6 rounded-lg shadow-lg flex-1 min-w-[250px] sm:min-w-[150px] max-w-[350px] min-h-[300px] flex flex-col">
             <h2 class="text-lg sm:text-xl font-semibold mb-4 text-center">تعداد افراد یتیم در هر خانواده</h2>
             <canvas id="orphansChart" class="flex-grow"></canvas>
         </div>
 
         <!-- Chart 5: Package Distribution Over Time -->
-        <div class="bg-white p-4 sm:p-6 rounded-lg shadow-lg flex-1 min-w-[250px] sm:min-w-[300px] max-w-[400px] min-h-[300px] flex flex-col">
+        <div class="bg-white p-4 sm:p-6 rounded-lg shadow-lg flex-1 min-w-[250px] sm:min-w-[150px] max-w-[350px] min-h-[300px] flex flex-col">
             <h2 class="text-lg sm:text-xl font-semibold mb-4 text-center">توزیع بسته‌های حمایتی در طول زمان</h2>
             <canvas id="packageDistChart" class="flex-grow"></canvas>
         </div>
 
         <!-- Chart 6: Package Total Cost -->
-        <div class="bg-white p-4 sm:p-6 rounded-lg shadow-lg flex-1 min-w-[250px] sm:min-w-[300px] max-w-[400px] min-h-[300px] flex flex-col">
+        <div class="bg-white p-4 sm:p-6 rounded-lg shadow-lg flex-1 min-w-[250px] sm:min-w-[150px] max-w-[350px] min-h-[300px] flex flex-col">
             <h2 class="text-lg sm:text-xl font-semibold mb-4 text-center">هزینه کل بسته‌های حمایتی</h2>
             <canvas id="packageCostChart" class="flex-grow"></canvas>
         </div>
 
         <!-- Chart 7: Medical Aid Costs -->
-        <div class="bg-white p-4 sm:p-6 rounded-lg shadow-lg flex-1 min-w-[250px] sm:min-w-[300px] max-w-[400px] min-h-[300px] flex flex-col">
+        <div class="bg-white p-4 sm:p-6 rounded-lg shadow-lg flex-1 min-w-[250px] sm:min-w-[150px] max-w-[350px] min-h-[300px] flex flex-col">
             <h2 class="text-lg sm:text-xl font-semibold mb-4 text-center">هزینه کمک‌های پزشکی</h2>
             <canvas id="medicalAidChart" class="flex-grow"></canvas>
         </div>
 
         <!-- Chart 8: Supporter Support Count -->
-        <div class="bg-white p-4 sm:p-6 rounded-lg shadow-lg flex-1 min-w-[250px] sm:min-w-[300px] max-w-[400px] min-h-[300px] flex flex-col">
+        <div class="bg-white p-4 sm:p-6 rounded-lg shadow-lg flex-1 min-w-[250px] sm:min-w-[150px] max-w-[350px] min-h-[300px] flex flex-col">
             <h2 class="text-lg sm:text-xl font-semibold mb-4 text-center">تعداد حساب‌های حامیان</h2>
             <canvas id="supporterCountChart" class="flex-grow"></canvas>
         </div>
 
         <!-- Chart 9: Support Amount Over Time -->
-        <div class="bg-white p-4 sm:p-6 rounded-lg shadow-lg flex-1 min-w-[250px] sm:min-w-[300px] max-w-[400px] min-h-[300px] flex flex-col">
+        <div class="bg-white p-4 sm:p-6 rounded-lg shadow-lg flex-1 min-w-[250px] sm:min-w-[150px] max-w-[350px] min-h-[300px] flex flex-col">
             <h2 class="text-lg sm:text-xl font-semibold mb-4 text-center">مبلغ حمایت‌های مالی در طول زمان</h2>
             <canvas id="supportAmountChart" class="flex-grow"></canvas>
         </div>
 
         <!-- Chart 10: Observations Over Time -->
-        <div class="bg-white p-4 sm:p-6 rounded-lg shadow-lg flex-1 min-w-[250px] sm:min-w-[300px] max-w-[400px] min-h-[300px] flex flex-col">
+        <div class="bg-white p-4 sm:p-6 rounded-lg shadow-lg flex-1 min-w-[250px] sm:min-w-[150px] max-w-[350px] min-h-[300px] flex flex-col">
             <h2 class="text-lg sm:text-xl font-semibold mb-4 text-center">تعداد مشاهدات در طول زمان</h2>
             <canvas id="observationsChart" class="flex-grow"></canvas>
         </div>

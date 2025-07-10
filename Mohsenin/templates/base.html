@@ -16,24 +16,18 @@
     <link href="{% static 'fontstyle/gulzar.css'%}" rel="stylesheet" />
     <link href="{% static 'css/dataTables.min.css'%}" rel="stylesheet" />
     <link href="{% static 'css/style.css'%}" rel="stylesheet" />
-    <style>
-        body{
-            -webkit-print-color-adjust:exact !important;
-            print-color-adjust:exact !important;
-          }
 
-    </style>
     
 
     
 </head>
 
-<body class="flex flex-col h-full ">
-    <div class="container  mx-auto">
+<body class="flex flex-col h-full h-screen">
+    <div class="container h-full max-w-full mx-auto">
         {% include "layout/navbar.html" %}
     
 
-        <div class="flex flex-1">
+        <div class="flex h-full flex-1">
         {% include "layout/sidebar.html"%}
             <div class="flex-1">
                 <div class="pr-5">
@@ -48,6 +42,8 @@
 
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="{% static 'js/charts.js'%}"></script>
     <script src="{% static 'flowbite/flowbite.min.js'%}"></script>
     <script src="{% static 'js/dataTables.min.js'%}"></script>
 

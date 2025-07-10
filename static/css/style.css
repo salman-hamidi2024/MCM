@@ -150,3 +150,7 @@ form {
       display: flex;
       margin-top: 5px;
 }
+.confirm-delete-form {
+      margin: 0;
+      margin-top: 15px;
+}
