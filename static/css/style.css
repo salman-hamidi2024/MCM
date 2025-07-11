@@ -143,7 +143,7 @@ table{
       width: 90%;
 }
 form {
-      margin: auto;
+      /* margin: auto; */
       width: 90%;
 }
 .delete-buttons {
@@ -151,6 +151,19 @@ form {
       margin-top: 5px;
 }
 .confirm-delete-form {
-      margin: 0;
+      justify-content: right;
+      margin-top: 15px;
+}
+.w-50-p {
+      width: 50%;
+}
+.h-full-vw {
+      height: 100vw;
+}
+.w-full-vw {
+      width: 100vw;
+}
+.detail-buttons{
+      margin-right: -5px;
       margin-top: 15px;
 }

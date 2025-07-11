@@ -3,9 +3,7 @@
 
 {% block content %}
 <div class="py-5 vazir-medium no-print">
-    <button type="button"
-        class="custom-button text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"><a
-            href="{% url 'family_create' %}">افزودن خانواده جدید</a></button>
+    <a href="{% url 'family_create' %}"><button type="button" class="custom-button cursor-pointer text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">افزودن خانواده جدید</button></a>
 </div>
 <h2 class="vazir-bold text-2xl">لیست خانواده ها</h2>
 <div class="size-16 py-5">

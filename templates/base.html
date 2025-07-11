@@ -16,19 +16,16 @@
     <link href="{% static 'fontstyle/gulzar.css'%}" rel="stylesheet" />
     <link href="{% static 'css/dataTables.min.css'%}" rel="stylesheet" />
     <link href="{% static 'css/style.css'%}" rel="stylesheet" />
-
-    <style>
-        
-    </style>
+    <link href="{% static 'css/responcive.css'%}" rel="stylesheet" />
     
 </head>
 
-<body class="flex flex-col h-full h-screen">
+<body class="flex flex-col h-auto h-screen">
     <div class="container h-full max-w-full">
         {% include "layout/navbar.html" %}
     
 
-        <div class="flex h-auto flex-1">
+        <div class="flex h-full-vw flex-1">
         {% include "layout/sidebar.html"%}
             <div class="flex-1">
                 <div class="pr-5">

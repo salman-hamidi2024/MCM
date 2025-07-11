@@ -56,6 +56,7 @@ class FamilyDetailView(View):
 
     def get(self, request, pk):  
         family = get_object_or_404(Family, pk=pk)  
+        
         context = {  
             'family': family,  
             'members': family.members.all()  # Access the members directly from the family instance  

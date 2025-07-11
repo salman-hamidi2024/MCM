@@ -34,8 +34,8 @@ class Family(models.Model):
     address = models.CharField('آدرس',max_length=255)
     contact_number = models.CharField('شماره تماس',max_length=15, blank=True, null=True)
     postal_code = models.CharField('کدپستی',max_length=10, blank=True, null= True)
-    distlist = models.ForeignKey(Dist, verbose_name='لیست توزیع',on_delete=models.SET_NULL, null=True, related_name='families')
-    is_active = models.BooleanField('تحت پوشش',default=True, choices=SUPPORTING_CHOICE)
+    distlist = models.ForeignKey(Dist, verbose_name='لیست توزیع',on_delete=models.SET_NULL,blank=True , null=True, related_name='families')
+    is_active = models.BooleanField('تحت پوشش',default=True)
     
     def __str__(self):
         if self.guardian:

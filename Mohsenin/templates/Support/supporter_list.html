@@ -27,12 +27,13 @@
 <tbody class="table-content">  
     {% for supporter in Supporters %}  
     <tr class="{% if forloop.counter|divisibleby:2 %}bg-white{% else %}bg-indigo-50{% endif %} border-b border-gray-200 hover:bg-gray-50 vazir-normal">  
-        <th scope="row" class="px-4 py-1 font-medium text-gray-900 whitespace-nowrap ">{{ supporter.name }}</th>  
-        <td >{{ supporter.contact }}</td>
-        <td >{{ supporter.email}}</td>  
-        <td >{{ supporter.supports_orphans_only }}</td>  
-        <td >{{ supporter.support_count}}</td>
-        <td >{{ supporter.get_is_active_display }}</td>  
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">{{ supporter.name }}</th>  
+        <td class="px-6 py-4">{{ supporter.contact }}</td>
+        <td class="px-6 py-4">{{ supporter.email}}</td>  
+        <td class="px-6 py-4">{{ supporter.supports_orphans_only }}</td>  
+        <td class="px-6 py-4">{{ supporter.support_count}}</td>
+        <td class="px-6 py-4">{{ supporter.get_is_active_display }}</td>  
+        
         <td  class="no-print">
             <div class="flex space-x-1">  
             <a href="{% url 'supporter-detail' supporter.pk %}" class="text-green-700 text-sm"><svg class="w-[23px] h-[23px] text-green-700" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">

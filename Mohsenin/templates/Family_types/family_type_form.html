@@ -4,11 +4,10 @@
 
 
 {% block content %}  
-
 <h2 class="vazir-semibold text-xl py-5">{% if family_type %}ویرایش دسته بندی{% else %}افزودن بسته جدید{% endif %}</h2>
 <form method="post">  
         {% csrf_token %}
-        <div class="mx-1/2">
+        <div class="flex flex-col w-50-p">
                 <div class="relative z-0 w-full mb-2 group pl-4">
                     <label for="{{ form.name.id_for_label }}" class="block mb-2 vazir-normal text-sm font-medium text-gray-900" >{{ form.name.label }}</label>
                     {{ form.name|add_class:'bg-gray-50 border border-gray-300 text-gray-900 vazir-normal text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2'}}
