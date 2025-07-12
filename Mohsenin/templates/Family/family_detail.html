@@ -13,30 +13,37 @@
         <div><strong>آدرس:</strong> {{ family.address }}</div>
         <div><strong>کدپستی:</strong> {{ family.postal_code }}</div>
         <div><strong>شماره تماس:</strong> {{ family.contact_number }}</div>
-        <div><strong>وضعیت حمایت:</strong> {{ family.get_is_active_display }}  </div>
+        <div><strong>وضعیت حمایت:</strong> {{ family.is_active }}  </div>
         <div><strong>لیست توزیع:</strong> {{ family.distlist }}</div>
       </div>
-      <div class="detail-buttons flex mt-15 rounded-md shadow-xs  vazir-normal no-print" role="group">
+      <div class="detail-buttons flex mt-15 rounded-md vazir-normal no-print" role="group">
         <a href="{% url 'family_update' family.pk %}">
-          <button type="button" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">ویرایش جزئیات خانواده</button>
+          <button type="button" class="cursor-pointer px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-700 focus:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-500 dark:focus:text-white">ویرایش جزئیات خانواده</button>
         </a>
+        {% if family.is_active %}
         <a href="{% url 'family_deactivate' family.pk %}">
-          <button type="button" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">{% if family.is_active %}اتمام حمایت از خانواده{% else %}شروع حمایت از خانواده{% endif %}</button>
+          <button type="button" class="cursor-pointer px-4 py-2 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-gray-700 focus:z-10 focus:ring-2 focus:ring-gray-700 focus:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-500 dark:focus:text-white">اتمام حمایت از خانواده</button>
         </a>
+        {% else %}
+          <a href="{% url 'active_family' family.pk %}">
+            <button type="button" class="cursor-pointer px-4 py-2 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-gray-700 focus:z-10 focus:ring-2 focus:ring-gray-700 focus:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-500 dark:focus:text-white">شروع حمایت از خانواده</button>
+          </a>
+        {% endif %}
         <a href="{% url 'family_list' %}">
-          <button type="button" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">برگشت به لیست خانواده ها</button>
+          <button type="button" class="cursor-pointer px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 focus:z-10 focus:ring-2 focus:ring-gray-700 focus:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-500 dark:focus:text-white">برگشت به لیست خانواده ها</button>
         </a>
       </div>
     </div>
     
+
+
+
   {% comment %} #-------------- Person's List of the Family {% endcomment %}
   <div class="py-5 vazir-medium no-print">
-    <button type="button" class="custom-button text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"><a href="{% url 'person_create' family.pk %}">افزودن عضو جدید</a></button>
-    {% if not family.is_active %}
-      <button type="button" class="custom-button text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"><a href="{% url 'active_family' family.pk %}">فعال سازی خانواده</a></button>
-    {% endif %}
+    <button type="button" class="custom-button text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"><a href="{% url 'person_create' family.pk %}">افزودن عضو جدید</a></button>
     </div>
    <div class="relative overflow-x-auto sm:rounded-lg border-none border-gray-700">
+    <h2 class="text-2xl font-bold text-gray-800 mb-4 vazir-bold">اعضای خانواده</h2>
       <table class="w-full text-sm rtl:text-right text-gray-700 bg-white rounded-lg overflow-hidden">
           <thead class="text-xs text-gray-700 uppercase bg-gray-700 text-white">
               <tr class="vazir-semibold">
@@ -86,9 +93,9 @@
                         {% endif %}  
                       </div>
                       <div class="modal-footer">
-                        <button class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 " onclick="closeModal()">انصراف</button>
-                        <button class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" onclick="confirmAction()"><a href="{% url 'person_as_guardian' family.pk member.pk %}">بله، اطمینان دارم.
+                        <button class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" onclick="confirmAction()"><a href="{% url 'person_as_guardian' family.pk member.pk %}">بله، اطمینان دارم.
                         </a></button>
+                        <button class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 " onclick="closeModal()">انصراف</button>
                       </div>
                     </div>
                   </div>
