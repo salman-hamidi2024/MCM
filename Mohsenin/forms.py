@@ -30,7 +30,7 @@ class PackageForm(forms.ModelForm):
 class PackageDistributionForm(forms.ModelForm):
     class Meta:
         model = PackageDistribution
-        fields = "__all__"
+        fields = ["family","members","distribution_date","is_active"]
 
 class SupporterForm(forms.ModelForm):
     class Meta:
@@ -43,3 +43,7 @@ class Family_Type_Form(forms.ModelForm):
     class Meta:
         model = Family_Type
         fields = ["name"]
+
+
+class SearchForm(forms.Form):
+    query = forms.CharField(label='Search', max_length=100, widget=forms.TextInput(attrs={'placeholder':  'جستجوی خانواده...'}))

@@ -2,76 +2,82 @@
 
 {% block content %}  
 
-        <h2 class="vazir-bold pt-10 pb-8 text-3xl"> {{ package.name }}</h2>
-
-        <table class="w-full max-w-2xl text-right vazir-normal text-lg">  
-            <tbody>  
-                <tr>
-                    <td class="text-left vazir-bold" style="max-width: 200px; white-space: nowrap;"> 
-                        تعداد افراد
-                      </td>  
-                      <td class="text-center px-2" style="width: 20px;">  
-                          :  
-                      </td>  
-                      <td class="text-right" style="width: 800px; white-space: nowrap;">  
-                        {{ package.max_members }}  
-                      </td>
-                </tr>
-                <tr>
-                    <td class="text-left vazir-bold" style="max-width: 200px; white-space: nowrap;"> 
-                        ارزش ریالی هر بسته
-                      </td>  
-                      <td class="text-center px-2" style="width: 20px;">  
-                          :  
-                      </td>  
-                      <td class="text-right" style="width: 800px; white-space: nowrap;">  
-                        {{ package.cost }}  
-                      </td>
-                </tr>
-                <tr>
-                    <td class="text-left vazir-bold" style="max-width: 200px; white-space: nowrap;"> 
-                        ارزش ریالی کل طرح
-                      </td>  
-                      <td class="text-center px-2" style="width: 20px;">  
-                          :  
-                      </td>  
-                      <td class="text-right" style="width: 800px; white-space: nowrap;">  
-                        {{ package.total_cost }}  
-                      </td>
-                </tr>
-                <tr>
-                    <td class="text-left vazir-bold" style="max-width: 200px; white-space: nowrap;"> 
-                        توضیحات
-                      </td>  
-                      <td class="text-center px-2" style="width: 20px;">  
-                          :  
-                      </td>  
-                      <td class="text-right flex" style="width: 800px; white-space: nowrap;">  
-                        {{ package.description }}  
-                      </td>
-                </tr>
-                <tr>
-                    <td class="text-left vazir-bold" style="max-width: 200px; white-space: nowrap;"> 
-                        هرخانواده یک بسته
-                      </td>  
-                      <td class="text-center px-2" style="width: 20px;">  
-                          :  
-                      </td>  
-                      <td class="text-right" style="width: 800px; white-space: nowrap;">  
-                        {{ package.get_onePerFamily_display }}  
-                      </td>
-                </tr>
-            </tbody>  
-        </table>
-          
-          <div class="inline-flex rounded-md shadow-xs  vazir-normal no-print" role="group">
-      
-        <div class="mt-6 flex space-x-4">
+<div style="margin-top:20px;margin-left: 20px;">
+    <div class="bg-white rounded-lg shadow-md p-6 max-w-3xl">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4 vazir-bold">{{ package.name }}</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-y-3 text-gray-700 vazir-normal">
+          <div><strong>تعداد افراد:</strong> {{ package.max_members }}</div>
+          <div><strong>ارزش ریالی هر بسته:</strong> {{ package.cost }}</div>
+          <div><strong>هرخانواده یک بسته:</strong> {{ package.get_onePerFamily_display }}</div>
+          <div><strong>ارزش ریالی کل طرح:</strong> {{ package.total_cost }}</div>
+          <div><strong></div>
+          <div><strong>توضیحات:</strong> {{ package.description }}</div>
+        </div>
+        <div class="detail-buttons flex gap-2 mt-15 rounded-md vazir-normal no-print" role="group">
             <a href="{% url 'package_update' package.pk %}">
-                <button type="button" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">ویرایش طرح</button>
+                <button type="button" class="cursor-pointer px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-700 focus:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-500 dark:focus:text-white">
+                    ویرایش طرح
+                </button>
             </a>
             <a href="{% url 'packages_list' %}">
-                <button type="button" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">برگشت به لیست طرح های حمایتی</button>
+                <button type="button" class="cursor-pointer px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-700 focus:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-500 dark:focus:text-white">
+                    برگشت به لیست طرح های حمایتی
+                </button>
             </a>
         </div>
+    </div>
+</div>
+
+
+<div class="py-5 vazir-medium no-print">
+    <a href="{% url 'packagedistributioncreate' package.pk %}"><button type="button" class="custom-button cursor-pointer text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">افزودن خانواده جدید</button></a>
+</div>
+<div class="relative overflow-x-auto sm:rounded-lg mt-4 border-none border-gray-700">
+<table style="width: 98%;" class="w-full text-sm rtl:text-right text-gray-700 bg-white rounded-lg overflow-hidden"> 
+        <thead class="text-xs text-gray-700 uppercase bg-gray-700 text-white">  
+    <tr class='vazir-semibold'>  
+        <th scope="col" class="px-6 py-3 text-end">خانواده</th>  
+        <th scope="col" class="px-6 py-3 text-right">افراد</th>
+        <th scope="col" class="px-6 py-3 text-right">تاریخ</th>
+        <th scope="col" class="px-6 py-3 text-right">وضعیت</th>
+        <th scope="col" class="px-6 py-3 text-right">عملیات</th>
+
+ 
+    </tr>
+</thead>
+<tbody class="table-content">  
+    {% for package_distribution in packages %}  
+    <tr class="{% if forloop.counter|divisibleby:2 %}bg-white{% else %}bg-indigo-50{% endif %} border-b border-gray-200 hover:bg-gray-50  vazir-normal">  
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">{{ package_distribution.family }}</th>  
+        {% comment %} <td class="px-6 py-4">{{ package_distribution.family }}</td> {% endcomment %}
+        <td class="px-6 py-4">{{ package_distribution.members }}</td>
+        <td class="px-6 py-4">{{ package_distribution.distribution_date }} </td>
+        <td class="px-6 py-4">{{ package_distribution.is_active }} </td>  
+  
+        <td  class="no-print">
+            <div class="flex space-x-1">    
+            <a href="{% url 'packagedistributionlisttransfer' package.pk %}" class="text-green-700 text-xs"><svg class="w-[23px] h-[23px] text-green-700" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+    <path d="M3 4.92857C3 3.90506 3.80497 3 4.88889 3H19.1111C20.195 3 21 3.90506 21 4.92857V19.0714C21 20.0949 20.195 21 19.1111 21H4.88889C3.80497 21 3 20.0949 3 19.0714V4.92857ZM12 6.5a1 1 0 0 0-1 1v5.5858l-1.2929 1.2929a1 1 0 0 0 1.4142 1.4142L12 14.4142l.8787.8787a1 1 0 0 0 1.4142-1.4142L13 12.5858V7.5a1 1 0 0 0-1-1Z"/>
+    <path d="M10 16v1h4v-1h-4Z"/>
+</svg>
+            </a> 
+            <a href="{% url 'packagedistributionupdate' package.pk package_distribution.family_id %}" class="text-blue-700 text-xs"><svg class="w-6 h-6 text-blue-700" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"/>
+              </svg>
+            </a>  
+            <a href="{% url 'packagedistributiondelete' package.pk package_distribution.family_id %}" class="text-blue-700 text-xs">
+                <svg class="w-6 h-6 text-red-700" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                    width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd"
+                        d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z"
+                        clip-rule="evenodd" />
+                </svg>
+            </a>  
+        </div>
+            </td>  
+    </tr>  
+    {% endfor %}
+</tbody>  
+</table>
+</div>
 {% endblock %} 

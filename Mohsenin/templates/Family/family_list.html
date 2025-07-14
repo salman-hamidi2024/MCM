@@ -58,66 +58,57 @@
     </form>
 </div>
 
-<div class="relative overflow-x-auto sm:rounded-lg border-none border-gray-700">
-    <table style="width: 90%;margin: auto;"
-        class="w-full text-sm rtl:text-right text-gray-700 bg-white rounded-lg overflow-hidden">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-700 text-white">
-            <tr class='vazir-semibold'>
-                <th scope="col" class="px-6 py-3 text-end">شماره پرونده</th>
-                <th scope="col" class="px-6 py-3 text-right">سرپرست خانوار</th>
-                <th scope="col" class="px-6 py-3 text-right">سطح نیاز</th>
-                <th scope="col" class="px-6 py-3 text-right">نوع خانوار</th>
-                <th scope="col" class="px-6 py-3 text-right">آدرس </th>
-                <th scope="col" class="px-6 py-3 text-right">کدپستی</th>
-                <th scope="col" class="px-6 py-3 text-right">شماره تماس</th>
-                <th scope="col" class="px-6 py-3 text-center no-print">عملیات</th>
-            </tr>
-        </thead>
-        <tbody class="table-content">
-            {% for family in families %}
-            <tr
-                class="tr-table{% if forloop.counter|divisibleby:2 %}bg-white{% else %}bg-indigo-50{% endif %} border-b border-gray-200 hover:bg-gray-50 vazir-normal">
-                <th scope="row" class="px-4 py-1 font-medium text-gray-900 whitespace-nowrap ">{{ family.doc_code }}
-                </th>
-                <td>{{ family.guardian }}</td>
-                <td>{{ family.get_need_level_display }}</td>
-                <td>{{ family.family_type }}</td>
-                <td>{{ family.address }}</td>
-                <td>{{ family.postal_code}}</td>
-                <td>{{ family.contact_number }}</td>
-                <td class="no-print">
-                    <div class="flex space-x-1">
-                        <a href="{% url 'family_detail' family.pk %}" class="text-green-700 text-sm"><svg
-                                class="w-[23px] h-[23px] text-green-700" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                                viewBox="0 0 24 24">
-                                <path
-                                    d="M3 4.92857C3 3.90506 3.80497 3 4.88889 3H19.1111C20.195 3 21 3.90506 21 4.92857V13h-3v-2c0-.5523-.4477-1-1-1h-4c-.5523 0-1 .4477-1 1v2H3V4.92857ZM3 15v1.0714C3 17.0949 3.80497 18 4.88889 18h3.47608L7.2318 19.3598c-.35356.4243-.29624 1.0548.12804 1.4084.42428.3536 1.05484.2962 1.40841-.128L10.9684 18h2.0632l2.2002 2.6402c.3535.4242.9841.4816 1.4084.128.4242-.3536.4816-.9841.128-1.4084L15.635 18h3.4761C20.195 18 21 17.0949 21 16.0714V15H3Z" />
-                                <path d="M16 12v1h-2v-1h2Z" />
-                            </svg>
-                        </a>
-                        <a href="{% url 'family_update' family.pk %}" class="text-blue-700 text-sm"><svg
-                                class="w-6 h-6 text-blue-700" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z" />
-                            </svg>
-                        </a>
-                        <a href="{% url 'family_deactivate' family.pk %}" class="text-red-700 text-sm"><svg
-                                class="w-6 h-6 text-red-700" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                                <path fill-rule="evenodd"
-                                    d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </a>
-                    </div>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+<div class="relative overflow-x-auto sm:rounded-lg border border-gray-200">
+    <div class="w-11/12 mx-auto overflow-hidden rounded-lg">
+        <table style="width: 90%;margin: auto;" class="w-full text-sm bg-white rounded-lg shadow-md">
+
+            <thead class="text-xs text-gray-700 uppercase bg-gray-700 text-white">  
+                <tr>
+                    <th scope="col" class="px-6 py-3 text-end">شماره پرونده</th>
+                    <th scope="col" class="px-6 py-3 text-right">سرپرست خانوار</th>
+                    <th scope="col" class="px-6 py-3 text-right">سطح نیاز</th>
+                    <th scope="col" class="px-6 py-3 text-right">نوع خانوار</th>
+                    {% comment %} <th scope="col" class="px-6 py-3 text-right">آدرس</th> {% endcomment %}
+                    <th scope="col" class="px-6 py-3 text-right">کدپستی</th>
+                    <th scope="col" class="px-6 py-3 text-right">شماره تماس</th>
+                    <th scope="col" class="px-6 py-3 text-right print:hidden">عملیات</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for family in families %}
+                <tr class="{% cycle 'bg-white' 'bg-indigo-50' %} border-b border-gray-200 hover:bg-gray-50">
+                    <th scope="row" class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap">{{ family.doc_code }}</th>
+                    <td class="px-4 py-2">{{ family.guardian }}</td>
+                    <td class="px-4 py-2">{{ family.get_need_level_display }}</td>
+                    <td class="px-4 py-2">{{ family.family_type }}</td>
+                    {% comment %} <td class="px-4 py-2">{{ family.address }}</td> {% endcomment %}
+                    <td class="px-4 py-2">{{ family.postal_code }}</td>
+                    <td class="px-4 py-2">{{ family.contact_number }}</td>
+                    <td class="print:hidden">
+                        <div class="flex justify-center space-x-2">
+                            <a href="{% url 'family_detail' family.pk %}" class="text-green-600 hover:scale-110 transition-transform" title="جزئیات" aria-label="مشاهده جزئیات">
+                                <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M3 4.92857C3 3.90506 3.80497 3 4.88889 3H19.1111C20.195 3 21 3.90506 21 4.92857V13h-3v-2c0-.5523-.4477-1-1-1h-4c-.5523 0-1 .4477-1 1v2H3V4.92857ZM3 15v1.0714C3 17.0949 3.80497 18 4.88889 18h3.47608L7.2318 19.3598c-.35356.4243-.29624 1.0548.12804 1.4084.42428.3536 1.05484.2962 1.40841-.128L10.9684 18h2.0632l2.2002 2.6402c.3535.4242.9841.4816 1.4084.128.4242-.3536.4816-.9841.128-1.4084L15.635 18h3.4761C20.195 18 21 17.0949 21 16.0714V15H3Z"/>
+                                    <path d="M16 12v1h-2v-1h2Z"/>
+                                </svg>
+                            </a>
+                            <a href="{% url 'family_update' family.pk %}" class="text-blue-600 hover:scale-110 transition-transform" title="ویرایش" aria-label="ویرایش">
+                                <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"/>
+                                </svg>
+                            </a>
+                            <a href="{% url 'family_deactivate' family.pk %}" class="text-red-600 hover:scale-110 transition-transform" title="غیرفعال کردن" aria-label="غیرفعال کردن">
+                                <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z" clip-rule="evenodd"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <script>

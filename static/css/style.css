@@ -96,9 +96,7 @@ color: white;
 .dark .custom-button:focus {
     box-shadow: 0 0 0 1px rgba(0, 103, 105, 0.8);
 }
-.table-content tr:nth-child(even){
-      background: #ddeb9dda;
-}
+
 
 .flex-options {
       display: flex;
@@ -167,3 +165,76 @@ form {
       margin-right: -5px;
       margin-top: 15px;
 }
+
+
+
+.alert {
+      font-family: dana;
+      position: fixed;
+      top: 30px;
+      right: 30px;
+      min-width: 300px;
+      max-width: 90%;
+      padding: 20px 30px;
+      border-radius: 16px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #ffffff;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      z-index: 9999;
+      opacity: 0;
+      transform: translateY(-20px);
+      animation: slideFadeIn 0.5s ease-out forwards;
+      }
+
+      .success {
+      background-image: linear-gradient(to right, #537D5D, #006769);
+      }
+
+      .error {
+      background-color: #cc0000;
+      }
+
+      .warning {
+      background-image: linear-gradient(to right, #FFD700, #ffd701);
+      color: #222;
+      }
+
+      @keyframes slideFadeIn {
+      to {
+            opacity: 1;
+            transform: translateY(0);
+      }
+      }
+
+      @keyframes slideFadeOut {
+      to {
+            opacity: 0;
+            transform: translateY(-20px);
+      }
+      }
+
+      .btn-error, .btn-success, .btn-warning{
+      font-family: dana;
+
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      margin: 10px;
+      cursor: pointer;
+      color: #fff;
+      }
+
+      .btn-success {
+      background-image: linear-gradient(to right, #537D5D, #006769);
+      }
+
+      .btn-error {
+      background-color: #cc0000;
+      }
+
+      .btn-warning {
+      background-image: linear-gradient(to right, #FFD700, #fff200);
+      color: #222;
+      }

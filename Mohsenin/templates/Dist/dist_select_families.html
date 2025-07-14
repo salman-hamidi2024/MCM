@@ -1,51 +1,56 @@
 {% extends 'base.html' %}
-
 {% block content %}
+{% if messages %}
+    <ul class="messages vazir-normal">
+        {% for message in messages %}
+            <li class="{% if message.tags == 'success' %}text-green-600{% elif message.tags == 'error' %}text-red-600{% endif %}">
+                {{ message }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
 {% if families|length > 0 %}
-
 <form method="POST" action="{% url 'associate_family_to_dist' pk=dist.pk %}">  
-        {% csrf_token %}
-
-        <div class="relative overflow-x-auto shadow-lg sm:rounded-lg border border-gray-700">
-<table class="w-full text-sm rtl:text-right text-gray-700 bg-white rounded-lg overflow-hidden"> 
-    <thead class="text-xs text-gray-700 uppercase bg-gray-700 text-white"> 
-    <tr class='vazir-semibold'>  
-        <th scope="col" class="px-6 py-3 text-end">شماره پرونده</th>  
-        <th scope="col" class="px-6 py-3 text-right">سرپرست خانوار</th>
-        <th scope="col" class="px-6 py-3 text-right">سطح نیاز</th>
-        <th scope="col" class="px-6 py-3 text-right">نوع خانوار</th>  
-        <th scope="col" class="px-6 py-3 text-right">آدرس </th>
-        <th scope="col" class="px-6 py-3 text-right">کدپستی</th>
-        <th scope="col" class="px-6 py-3 text-right">شماره تماس</th>
-        <th scope="col" class="px-6 py-3 text-center no-print">عملیات</th>  
-  
-    </tr>
-</thead>
-<tbody>  
-    {% for family in families %}  
-    {% if family.is_active %}
-    <tr class="{% if forloop.counter|divisibleby:2 %}bg-white{% else %}bg-indigo-50{% endif %} border-b border-gray-200 hover:bg-gray-50 vazir-normal">  
-        <th scope="row" class="px-4 py-1 font-medium text-gray-900 whitespace-nowrap ">{{ family.doc_code }}</th>  
-        <td >{{ family.guardian }}</td>
-        <td >{{ family.get_need_level_display }}</td>
-        <td >{{ family.get_family_type_display}}</td>  
-        <td >{{ family.address }}</td>  
-        <td >{{ family.postal_code}}</td>
-        <td >{{ family.contact_number }}</td>  
-        <td  class="no-print">
-            <input type="checkbox" name="family_ids" value="{{ family.id }}"> 
-        </td>
-    </tr>  
-    {% endif %}
-    {% endfor %}
-</tbody>  
-</table>
-</div>
-<button type="submit" class="custom-button text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 ">ذخیره</button>
+    {% csrf_token %}
+    <!-- بقیه کد قالب شما بدون تغییر -->
+    <div class="relative overflow-x-auto shadow-lg sm:rounded-lg border border-gray-700">
+        <table class="w-full text-sm rtl:text-right text-gray-700 bg-white rounded-lg overflow-hidden"> 
+            <thead class="text-xs text-gray-700 uppercase bg-gray-700 text-white"> 
+                <tr class='vazir-semibold'>  
+                    <th scope="col" class="px-6 py-3 text-end">شماره پرونده</th>  
+                    <th scope="col" class="px-6 py-3 text-right">سرپرست خانوار</th>
+                    <th scope="col" class="px-6 py-3 text-right">سطح نیاز</th>
+                    <th scope="col" class="px-6 py-3 text-right">نوع خانوار</th>  
+                    <th scope="col" class="px-6 py-3 text-right">آدرس </th>
+                    <th scope="col" class="px-6 py-3 text-right">کدپستی</th>
+                    <th scope="col" class="px-6 py-3 text-right">شماره تماس</th>
+                    <th scope="col" class="px-6 py-3 text-center no-print">عملیات</th>  
+                </tr>
+            </thead>
+            <tbody>  
+                {% for family in families %}  
+                {% if family.is_active %}
+                <tr class="{% if forloop.counter|divisibleby:2 %}bg-white{% else %}bg-indigo-50{% endif %} border-b border-gray-200 hover:bg-gray-50 vazir-normal">  
+                    <th scope="row" class="px-4 py-1 font-medium text-gray-900 whitespace-nowrap ">{{ family.doc_code }}</th>  
+                    <td>{{ family.guardian }}</td>
+                    <td>{{ family.get_need_level_display }}</td>
+                    <td>{{ family.family_type }}</td>  
+                    <td>{{ family.address }}</td>  
+                    <td>{{ family.postal_code}}</td>
+                    <td>{{ family.contact_number }}</td>  
+                    <td class="no-print">
+                        <input type="checkbox" name="family_ids" value="{{ family.id }}"> 
+                    </td>
+                </tr>  
+                {% endif %}
+                {% endfor %}
+            </tbody>  
+        </table>
+    </div>
+    <button type="submit" class="custom-button text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2">ذخیره</button>
 </form>
 {% else %}
 <h4 class="vazir-bold">در حال حاضر خانواده فاقد لیست توزیعی وجود ندارد!</h4>
 {% endif %}
-
-
-{% endblock%}
+{% endblock %}

@@ -1,12 +1,13 @@
+// https://grok.com/chat/1d7a419d-897f-42ed-9e58-5cad7f27ac79
 // Chart.js Configurations
         const colors = [
-            '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40',
-            '#FF5733', '#C70039', '#900C3F', '#581845'
+            '#2FDD92', '#548CFF', '#D1FFA2', '#4FD3C4', '#28ABB9', '#7FDBDA',
+            '#B2D3BE', '#3D93A3', '#09A8FA', '#7DACE4'
         ];
 
-        // Chart 1: Family Type Distribution (Pie)
+        // Chart 1: Family Type Distribution (bar)
         new Chart(document.getElementById('familyTypeChart'), {
-            type: 'pie',
+            type: 'bar',
             data: {
                 labels: ['یتیم', 'زندانی', 'مطلقه', 'رها شده', 'بیمار', 'فقیر'],
                 datasets: [{
@@ -18,11 +19,12 @@
             },
             options: {
                 responsive: true,
-                plugins: { legend: { position: 'top' }, title: { display: true, text: 'توزیع خانواده‌ها بر اساس نوع نیازمندی' } }
+                plugins: { legend: { position: 'top' }, title: { display: false, text: 'توزیع خانواده‌ها بر اساس نوع نیازمندی' } },
+                scales: { y: { beginAtZero: true } }
             }
         });
 
-        // Chart 2: Need Level Distribution (Bar)
+        // Chart 2: Need Level Distribution (bar)
         new Chart(document.getElementById('needLevelChart'), {
             type: 'bar',
             data: {
@@ -41,7 +43,7 @@
             }
         });
 
-        // Chart 3: Families per Dist List (Bar)
+        // Chart 3: Families per Dist List (bar)
         new Chart(document.getElementById('distListChart'), {
             type: 'bar',
             data: {
@@ -60,7 +62,7 @@
             }
         });
 
-        // Chart 4: Orphans per Family (Bar)
+        // Chart 4: Orphans per Family (bar)
         new Chart(document.getElementById('orphansChart'), {
             type: 'bar',
             data: {
@@ -79,9 +81,9 @@
             }
         });
 
-        // Chart 5: Package Distribution Over Time (Line)
+        // Chart 5: Package Distribution Over Time (bar)
         new Chart(document.getElementById('packageDistChart'), {
-            type: 'line',
+            type: 'bar',
             data: {
                 labels: ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد'],
                 datasets: [{
@@ -99,9 +101,9 @@
             }
         });
 
-        // Chart 6: Package Total Cost (Pie)
+        // Chart 6: Package Total Cost (bar)
         new Chart(document.getElementById('packageCostChart'), {
-            type: 'pie',
+            type: 'bar',
             data: {
                 labels: ['بسته ۱', 'بسته ۲', 'بسته ۳'],
                 datasets: [{
@@ -113,11 +115,11 @@
             },
             options: {
                 responsive: true,
-                plugins: { legend: { position: 'top' }, title: { display: true, text: 'هزینه کل بسته‌های حمایتی' } }
+                plugins: { legend: { position: 'top' }, title: { display: false, text: 'هزینه کل بسته‌های حمایتی' } }
             }
         });
 
-        // Chart 7: Medical Aid Costs (Bar)
+        // Chart 7: Medical Aid Costs (bar)
         new Chart(document.getElementById('medicalAidChart'), {
             type: 'bar',
             data: {
@@ -136,7 +138,7 @@
             }
         });
 
-        // Chart 8: Supporter Support Count (Bar)
+        // Chart 8: Supporter Support Count (bar)
         new Chart(document.getElementById('supporterCountChart'), {
             type: 'bar',
             data: {
@@ -155,9 +157,9 @@
             }
         });
 
-        // Chart 9: Support Amount Over Time (Line)
+        // Chart 9: Support Amount Over Time (bar)
         new Chart(document.getElementById('supportAmountChart'), {
-            type: 'line',
+            type: 'bar',
             data: {
                 labels: ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد'],
                 datasets: [{
@@ -175,9 +177,9 @@
             }
         });
 
-        // Chart 10: Observations Over Time (Line)
+        // Chart 10: Observations Over Time (bar)
         new Chart(document.getElementById('observationsChart'), {
-            type: 'line',
+            type: 'bar',
             data: {
                 labels: ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد'],
                 datasets: [{

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <meta charset="UTF-8">
+    <title>soli</title>
+    <style>
+            .alert {
+            font-family: dana;
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            min-width: 300px;
+            max-width: 90%;
+            padding: 20px 30px;
+            border-radius: 16px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ffffff;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            z-index: 9999;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: slideFadeIn 0.5s ease-out forwards;
+        }
+
+        .success {
+            background-image: linear-gradient(to right, #537D5D, #006769);
+        }
+
+        .error {
+            background-color: #cc0000;
+        }
+
+        .warning {
+            background-image: linear-gradient(to right, #FFD700, #ffd701);
+            color: #222;
+        }
+
+        @keyframes slideFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideFadeOut {
+            to {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+        }
+
+        .btn-error, .btn-success, .btn-warning{
+            font-family: dana;
+            
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 10px;
+            margin: 10px;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .btn-success {
+            background-image: linear-gradient(to right, #537D5D, #006769);
+        }
+
+        .btn-error {
+            background-color: #cc0000;
+        }
+
+        .btn-warning {
+            background-image: linear-gradient(to right, #FFD700, #fff200);
+            color: #222;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <button class="btn-error" onclick="showAlert('خطا در انجام عملیات', 'error')">❌ خطا</button>
+    <!-- اینم وارنینگ سلی -->
+    <button class="btn-warning" onclick="showAlert('لطفاً اطلاعات را کامل وارد کنید!', 'warning')">⚠️ هشدار</button>
+
+    <script>
+        // وضت چونه سلی
+        function showAlert(message, type) {
+            const alert = document.createElement('div');
+            alert.classList.add('alert', type);
+            alert.innerText = message;
+            document.body.appendChild(alert);
+
+            setTimeout(() => {
+                alert.style.animation = 'slideFadeOut 0.5s forwards';
+                setTimeout(() => alert.remove(), 500);
+            }, 5000);
+        }
+    </script>
+
+</body>
+
+</html>

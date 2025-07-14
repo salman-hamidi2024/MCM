@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="flex-1 pr-5">
+    <div style="margin-top: 20px; margin-left: 20px;">
+    <div class=" bg-white rounded-lg shadow-md p-6 max-w-3xl ">
+    <h2 class="text-2xl font-bold text-gray-800 mb-4 vazir-bold">انتقال خانواده به توزیع</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-y-3 text-gray-700 vazir-normal">
+        <div><strong>شماره پرونده:</strong> {{ family.doc_code }}</div>
+        <div><strong>سرپرست خانواده:</strong> {{ family.guardian }}</div>
+        <div><strong>نوع نیازمندی:</strong> {{ family.family_type.name }}</div>
+        <div><strong>سطح نیازمندی:</strong> {{ family.get_need_level_display }}</div>
+        <div><strong>تعداد اعضا:</strong>{{ members|length }} {% if members %}-{% else %} {% endif %}نفر </div>
+        <div><strong>لیست توزیع:</strong> {{ family.distlist }}</div>
+      </div>
+    </div>
+
+    <div class="flex m-4">
+        <h2 class="text-lg font-semibold text-gray-800 mb-4 vazir-bold">انتخاب یک خانواده برای انتقال به توزیع</h2>
+    </div>
+      
+    <div class="grid grid-cols-1 mt-4 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {% for dist in all_dists %}
+      {% comment %} <div class="border-b border-gray-200 py-2">
+        <a href="{% url 'transfer_family_to_dist' dist.pk family.pk %}" class="text-blue-600 hover:underline">انتقال به {{ dist.name }}</a>
+      </div> {% endcomment %}
+            <!-- Card 1 -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-3 vazir-bold">{{ dist.name }}</h3>
+                <div class="grid grid-cols-1 gap-y-3 text-gray-700 vazir-normal">
+                    <div><strong>توضیحات:</strong>{{ dist.note }}</div>
+                    <div><strong>تعداد:</strong> {{ dist.familycount }}</div>
+                </div>
+                <div class="flex gap-2 mt-4 vazir-normal no-print" role="group">
+                    <a href="{% url 'transfer_family_to_dist' dist.pk family.pk %}">
+                        <button type="button" class="cursor-pointer px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-700 focus:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-500 dark:focus:text-white">
+                            انتقال
+                        </button>
+                    </a>
+                    
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

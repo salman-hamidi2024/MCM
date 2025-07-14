@@ -1,53 +1,80 @@
-from django.shortcuts import render, get_object_or_404, redirect  
-from django.views import View  
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView  
-from django.urls import reverse_lazy  
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib import messages
+from django.urls import reverse_lazy
 from .models import Family, Dist, Person
 from .forms import FamilyForm, NewFamilyForm, DistForm, PersonForm
 
-# Create your views here.
-
+# Index View
 def index(request):
-    return render(request, 'Mohsenin/index.html')
+    return render(request, 'mohsenin/index.html')
 
-#-------------- Distribution list views
-class DistListView(ListView):
-    model = Dist
-    template_name = 'Dist/Dist_list.html'
-    context_object_name = 'dists'
+# List Distributions
+def dist_list(request):
+    dists = Dist.objects.all().order_by('id')  # مرتب‌سازی برای خوانایی
+    context = {
+        'dists': dists,
+    }
+    return render(request, 'dist/dist_list.html', context)
 
-    def get_context_data(self, **kwargs):  
-        context = super().get_context_data(**kwargs)  
-        return context
-
-
-class DistCreateView(CreateView):
-    model = Dist
-    form_class = DistForm
-    template_name = 'Dist/Dist_form.html'
-    success_url = reverse_lazy('dist_list')
-
-class DistUpdateView(UpdateView):  
-    model = Dist  
-    form_class = DistForm  # Use a ModelForm for Family  
-    template_name = 'Dist/Dist_form.html'  
-    success_url = reverse_lazy('dist_list')
-
-class DistDeleteView(View):  
-    def get(self, request, pk):  
-        dist = get_object_or_404(Dist, pk=pk)  
-        return render(request, 'Dist/dist_confirm_delete.html', {'dist': dist})  
+# Create Distribution
+def dist_create(request):
+    if request.method == 'POST':
+        form = DistForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'توزیع با موفقیت ایجاد شد.')
+            return redirect('dist_list')
+        else:
+            messages.error(request, 'خطایی در ایجاد توزیع رخ داد. لطفاً فرم را بررسی کنید.')
+    else:
+        form = DistForm()
     
-    def post(self, request, pk):  
-        dist = get_object_or_404(Dist, pk=pk)  
-        dist.delete()  
-        return redirect(reverse_lazy('dist_list'))
- 
+    context = {
+        'form': form,
+    }
+    return render(request, 'dist/dist_form.html', context)
 
+# Update Distribution
+def dist_update(request, pk):
+    dist = get_object_or_404(Dist, pk=pk)
+    
+    if request.method == 'POST':
+        form = DistForm(request.POST, instance=dist)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'توزیع با موفقیت به‌روزرسانی شد.')
+            return redirect('dist_list')
+        else:
+            messages.error(request, 'خطایی در به‌روزرسانی توزیع رخ داد. لطفاً فرم را بررسی کنید.')
+    else:
+        form = DistForm(instance=dist)
+    
+    context = {
+        'form': form,
+        'dist': dist,
+    }
+    return render(request, 'dist/dist_form.html', context)
 
-#-------------- Observation views
-class ObservationListView(View):  
-    def get(self, request, family_id):  
-        family = get_object_or_404(Family, id=family_id)  
-        observations = family.observation_set.all()  
-        return render(request, 'observations/observation_list.html', {'family': family, 'observations': observations})  
+# Delete Distribution
+def dist_delete(request, pk):
+    dist = get_object_or_404(Dist, pk=pk)
+    
+    if request.method == 'POST':
+        dist.delete()
+        messages.success(request, 'توزیع با موفقیت حذف شد.')
+        return redirect('dist_list')
+    
+    context = {
+        'dist': dist,
+    }
+    return render(request, 'dist/dist_confirm_delete.html', context)
+
+# List Observations for a Family
+def observation_list(request, family_id):
+    family = get_object_or_404(Family, id=family_id)
+    observations = family.observation_set.all().order_by('-id')  # مرتب‌سازی برای نمایش جدیدترین‌ها
+    context = {
+        'family': family,
+        'observations': observations,
+    }
+    return render(request, 'observations/observation_list.html', context)

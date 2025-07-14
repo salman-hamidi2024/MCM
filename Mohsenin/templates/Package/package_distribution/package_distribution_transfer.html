@@ -1,0 +1,242 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Card List Content -->
+<div class="flex-1 pr-5">
+    <div style="margin-top: 20px; margin-left: 20px;">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4 vazir-bold">انتقال {{ family.guardian }}</h2>
+
+        {% for package_distribution in package_distributions %}
+            <div class="bg-white rounded-lg shadow-md p-6 mb-4">
+                <h3 class="text-xl font-semibold text-gray-800 mb-3 vazir-bold">{{ package_distribution.family.name }}</h3>
+                <div class="grid grid-cols-1 gap-y-3 text-gray-700 vazir-normal">
+                    <div><strong>افراد:</strong> {{ package_distribution.members.count }}</div>
+                    <div><strong>تاریخ:</strong> {{ package_distribution.distribution_date }}</div>
+                    <div><strong>وضعیت:</strong> {{ package_distribution.is_active|yesno:"فعال,غیرفعال" }}</div>
+                </div>
+                <div class="flex gap-2 mt-4 vazir-normal no-print" role="group">
+                    <a href="{% url 'packagedistributiontransfer' family.id package_distribution.id  %}">
+                        <button type="button" class="cursor-pointer px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-700 focus:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-500 dark:focus:text-white">
+                            انتقال
+                        </button>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+            
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Card 1 -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-3 vazir-bold">(120) سرپرست تعیین نشده</h3>
+                <div class="grid grid-cols-1 gap-y-3 text-gray-700 vazir-normal">
+                    <div><strong>افراد:</strong> Mohsenin.Person.None</div>
+                    <div><strong>تاریخ:</strong> 15 مهر 1400</div>
+                    <div><strong>وضعیت:</strong> فعال</div>
+                </div>
+                <div class="flex gap-2 mt-4 vazir-normal no-print" role="group">
+                    <a href="/card/1/update">
+                        <button type="button" class="cursor-pointer px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-700 focus:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-500 dark:focus:text-white">
+                            ویرایش
+                        </button>
+                    </a>
+                    
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-3 vazir-bold">(45) سرپرست تعیین نشده</h3>
+                <div class="grid grid-cols-1 gap-y-3 text-gray-700 vazir-normal">
+                    <div><strong>افراد:</strong> Mohsenin.Person.None</div>
+                    <div><strong>تاریخ:</strong> 3 فروردین 1404</div>
+                    <div><strong>وضعیت:</strong> فعال</div>
+                </div>
+                <div class="flex gap-2 mt-4 vazir-normal no-print" role="group">
+                    <a href="/card/2/update">
+                        <button type="button" class="cursor-pointer w-full px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-700 focus:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-500 dark:focus:text-white">
+                            ویرایش
+                        </button>
+                    </a>
+                    
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-3 vazir-bold">(45) سرپرست تعیین نشده</h3>
+                <div class="grid grid-cols-1 gap-y-3 text-gray-700 vazir-normal">
+                    <div><strong>افراد:</strong> Mohsenin.Person.None</div>
+                    <div><strong>تاریخ:</strong> 3 فروردین 1404</div>
+                    <div><strong>وضعیت:</strong> فعال</div>
+                </div>
+                <div class="flex gap-2 mt-4 vazir-normal no-print" role="group">
+                    <a href="/card/2/update">
+                        <button type="button" class="cursor-pointer w-full px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-700 focus:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-500 dark:focus:text-white">
+                            ویرایش
+                        </button>
+                    </a>
+                    
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-3 vazir-bold">(45) سرپرست تعیین نشده</h3>
+                <div class="grid grid-cols-1 gap-y-3 text-gray-700 vazir-normal">
+                    <div><strong>افراد:</strong> Mohsenin.Person.None</div>
+                    <div><strong>تاریخ:</strong> 3 فروردین 1404</div>
+                    <div><strong>وضعیت:</strong> فعال</div>
+                </div>
+                <div class="flex gap-2 mt-4 vazir-normal no-print" role="group">
+                    <a href="/card/2/update">
+                        <button type="button" class="cursor-pointer w-full px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-700 focus:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-500 dark:focus:text-white">
+                            ویرایش
+                        </button>
+                    </a>
+                    
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-3 vazir-bold">(45) سرپرست تعیین نشده</h3>
+                <div class="grid grid-cols-1 gap-y-3 text-gray-700 vazir-normal">
+                    <div><strong>افراد:</strong> Mohsenin.Person.None</div>
+                    <div><strong>تاریخ:</strong> 3 فروردین 1404</div>
+                    <div><strong>وضعیت:</strong> فعال</div>
+                </div>
+                <div class="flex gap-2 mt-4 vazir-normal no-print" role="group">
+                    <a href="/card/2/update">
+                        <button type="button" class="cursor-pointer w-full px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-700 focus:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-500 dark:focus:text-white">
+                            ویرایش
+                        </button>
+                    </a>
+                    
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-3 vazir-bold">(45) سرپرست تعیین نشده</h3>
+                <div class="grid grid-cols-1 gap-y-3 text-gray-700 vazir-normal">
+                    <div><strong>افراد:</strong> Mohsenin.Person.None</div>
+                    <div><strong>تاریخ:</strong> 3 فروردین 1404</div>
+                    <div><strong>وضعیت:</strong> فعال</div>
+                </div>
+                <div class="flex gap-2 mt-4 vazir-normal no-print" role="group">
+                    <a href="/card/2/update">
+                        <button type="button" class="cursor-pointer w-full px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-700 focus:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-500 dark:focus:text-white">
+                            ویرایش
+                        </button>
+                    </a>
+                    
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-3 vazir-bold">(45) سرپرست تعیین نشده</h3>
+                <div class="grid grid-cols-1 gap-y-3 text-gray-700 vazir-normal">
+                    <div><strong>افراد:</strong> Mohsenin.Person.None</div>
+                    <div><strong>تاریخ:</strong> 3 فروردین 1404</div>
+                    <div><strong>وضعیت:</strong> فعال</div>
+                </div>
+                <div class="flex gap-2 mt-4 vazir-normal no-print" role="group">
+                    <a href="/card/2/update">
+                        <button type="button" class="cursor-pointer w-full px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-700 focus:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-500 dark:focus:text-white">
+                            ویرایش
+                        </button>
+                    </a>
+                    
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-3 vazir-bold">(45) سرپرست تعیین نشده</h3>
+                <div class="grid grid-cols-1 gap-y-3 text-gray-700 vazir-normal">
+                    <div><strong>افراد:</strong> Mohsenin.Person.None</div>
+                    <div><strong>تاریخ:</strong> 3 فروردین 1404</div>
+                    <div><strong>وضعیت:</strong> فعال</div>
+                </div>
+                <div class="flex gap-2 mt-4 vazir-normal no-print" role="group">
+                    <a href="/card/2/update">
+                        <button type="button" class="cursor-pointer w-full px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-700 focus:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-500 dark:focus:text-white">
+                            ویرایش
+                        </button>
+                    </a>
+                    
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-3 vazir-bold">(45) سرپرست تعیین نشده</h3>
+                <div class="grid grid-cols-1 gap-y-3 text-gray-700 vazir-normal">
+                    <div><strong>افراد:</strong> Mohsenin.Person.None</div>
+                    <div><strong>تاریخ:</strong> 3 فروردین 1404</div>
+                    <div><strong>وضعیت:</strong> فعال</div>
+                </div>
+                <div class="flex gap-2 mt-4 vazir-normal no-print" role="group">
+                    <a href="/card/2/update">
+                        <button type="button" class="cursor-pointer w-full px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-700 focus:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-500 dark:focus:text-white">
+                            ویرایش
+                        </button>
+                    </a>
+                    
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-3 vazir-bold">(45) سرپرست تعیین نشده</h3>
+                <div class="grid grid-cols-1 gap-y-3 text-gray-700 vazir-normal">
+                    <div><strong>افراد:</strong> Mohsenin.Person.None</div>
+                    <div><strong>تاریخ:</strong> 3 فروردین 1404</div>
+                    <div><strong>وضعیت:</strong> فعال</div>
+                </div>
+                <div class="flex gap-2 mt-4 vazir-normal no-print" role="group">
+                    <a href="/card/2/update">
+                        <button type="button" class="cursor-pointer w-full px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-700 focus:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-500 dark:focus:text-white">
+                            ویرایش
+                        </button>
+                    </a>
+                    
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-3 vazir-bold">(45) سرپرست تعیین نشده</h3>
+                <div class="grid grid-cols-1 gap-y-3 text-gray-700 vazir-normal">
+                    <div><strong>افراد:</strong> Mohsenin.Person.None</div>
+                    <div><strong>تاریخ:</strong> 3 فروردین 1404</div>
+                    <div><strong>وضعیت:</strong> فعال</div>
+                </div>
+                <div class="flex gap-2 mt-4 vazir-normal no-print" role="group">
+                    <a href="/card/2/update">
+                        <button type="button" class="cursor-pointer w-full px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-700 focus:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-500 dark:focus:text-white">
+                            ویرایش
+                        </button>
+                    </a>
+                    
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-3 vazir-bold">(45) سرپرست تعیین نشده</h3>
+                <div class="grid grid-cols-1 gap-y-3 text-gray-700 vazir-normal">
+                    <div><strong>افراد:</strong> Mohsenin.Person.None</div>
+                    <div><strong>تاریخ:</strong> 3 فروردین 1404</div>
+                    <div><strong>وضعیت:</strong> فعال</div>
+                </div>
+                <div class="flex gap-2 mt-4 vazir-normal no-print" role="group">
+                    <a href="/card/2/update">
+                        <button type="button" class="cursor-pointer w-full px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-700 focus:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-500 dark:focus:text-white">
+                            ویرایش
+                        </button>
+                    </a>
+                    
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-3 vazir-bold">(45) سرپرست تعیین نشده</h3>
+                <div class="grid grid-cols-1 gap-y-3 text-gray-700 vazir-normal">
+                    <div><strong>افراد:</strong> Mohsenin.Person.None</div>
+                    <div><strong>تاریخ:</strong> 3 فروردین 1404</div>
+                    <div><strong>وضعیت:</strong> فعال</div>
+                </div>
+                <div class="flex gap-2 mt-4 vazir-normal no-print" role="group">
+                    <a href="/card/2/update">
+                        <button type="button" class="cursor-pointer w-full px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-700 focus:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-500 dark:focus:text-white">
+                            ویرایش
+                        </button>
+                    </a>
+                    
+                </div>
+            </div>
+            <!-- Add more cards as needed -->
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,83 +1,111 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <div class="rtl">
-    {% comment %} Todo: possition it nicer {% endcomment %}
-    <h2 class="vazir-bold pt-10 pb-8 text-3xl">مشخصات لیست توزیع</h2>
-    
-    <table class="w-full max-w-2xl text-right vazir-normal text-lg">  
-      <tbody>  
-          <tr>  
-              <td class="text-left vazir-bold" style="max-width: 200px; white-space: nowrap;"> 
-                نام لیست
-              </td>  
-              <td class="text-center px-2" style="width: 20px;">  
-                  :  
-              </td>  
-              <td class="text-right" style="width: 800px; white-space: nowrap;">  
-                {{ dist.name }}  
-              </td>  
-          </tr>
-          <tr>  
-            <td class="text-left  vazir-bold" style="max-width: 200px; white-space: nowrap;">
-              تعداد خانواده ها 
-            </td>  
-            <td class="text-center" style="width: 20px;">  
-                :  
-            </td>  
-            <td class="text-right" style="width: 800px;  white-space: nowrap;">
-              {{ dist.familycount }}  
-            </td>  
-          </tr>
-          <tr>  
-            <td class="text-left vazir-bold" style="max-width: 200px; white-space: nowrap;">   
-              <p><storng>توضیحات</strong></p>
-            </td>  
-            <td class="text-center" style="width: 20px;">  
-                :  
-            </td>  
-            <td class="text-right" style="width:800px; white-space: nowrap;">  
-              {{ dist.note }}  
-            </td>  
-          </tr>
-            
-      </tbody>  
-  </table>
+<div style="margin-top:20px;margin-left: 20px;">
+    <div class="bg-white rounded-lg shadow-md p-6 max-w-3xl">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4 vazir-bold">مشخصات لیست توزیع</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-y-3 text-gray-700 vazir-normal">
+            <div><strong>نام لیست:</strong> {{ dist.name }}</div>
+            <div><strong>توضیحات:</strong> {{ dist.note }}</div>
+            <div><strong>تعداد خانواده‌ها:</strong> {{ dist.familycount }}</div>
+        </div>
+        <div class="detail-buttons flex mt-15 rounded-md vazir-normal no-print" role="group">
+          <a href="{% url 'families_without_dist' pk=dist.pk %}">
+              <button type="button" class="cursor-pointer px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-700 focus:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-500 dark:focus:text-white">
+                  افزودن خانواده از لیست خانواده‌های فاقد لیست توزیع
+              </button>
+          </a>
+      </div>
+    </div>
+</div>
+
+
+
 
 
 <div class="py-5 vazir-medium no-print">
-<button type="button" class="custom-button text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
-<a href="{% url 'families_without_dist' pk=dist.pk %}">افزودن خانواده از لیست خانواده های فاقد لیست توزیع</a>
-</button>
+    <button type="button" class="custom-button text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+        <a href="{% url 'family_create' %}">افزودن خانواده جدید</a>
+    </button>
 </div>
 
 <div class="relative overflow-x-auto sm:rounded-lg border-none">
-<table class="w-full text-sm rtl:text-right text-gray-700 bg-white rounded-lg overflow-hidden"> 
-    <thead class="text-xs text-gray-700 uppercase bg-gray-700 text-white"> 
-    <tr class='vazir-semibold'>  
-        <th scope="col" class="px-6 py-3 text-end">شماره پرونده</th>  
-        <th scope="col" class="px-6 py-3 text-right">سرپرست خانوار</th>
-        <th scope="col" class="px-6 py-3 text-right">سطح نیاز</th>
-        <th scope="col" class="px-6 py-3 text-right">نوع خانوار</th>  
-        <th scope="col" class="px-6 py-3 text-right">آدرس </th>
-        <th scope="col" class="px-6 py-3 text-right">کدپستی</th>
-        <th scope="col" class="px-6 py-3 text-right">شماره تماس</th>  
-    </tr>
-</thead>
-<tbody class="table-content">  
-    {% for family in families %}  
-    <tr class="{% if forloop.counter|divisibleby:2 %}bg-white{% else %}bg-indigo-50{% endif %} border-b border-gray-200 hover:bg-gray-50 vazir-normal">  
-        <th scope="row" class="px-4 py-1 font-medium text-gray-900 whitespace-nowrap ">{{ family.doc_code }}</th>  
-        <td >{{ family.guardian }}</td>
-        <td >{{ family.get_need_level_display }}</td>
-        <td >{{ family.get_family_type_display}}</td>  
-        <td >{{ family.address }}</td>  
-        <td >{{ family.postal_code}}</td>
-        <td >{{ family.contact_number }}</td>  
-  
-    </tr>  
-    {% endfor %}
-</tbody>  
-</table>
+    <h2 class="text-2xl font-bold text-gray-800 mb-4 vazir-bold">لیست خانواده‌ها</h2>
+    <table class="w-full text-sm rtl:text-right text-gray-700 bg-white rounded-lg overflow-hidden">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-700 text-white">
+            <tr class="vazir-semibold">
+                <th scope="col" class="px-6 py-3 text-end">شماره پرونده</th>
+                <th scope="col" class="px-6 py-3 text-right">سرپرست خانوار</th>
+                <th scope="col" class="px-6 py-3 text-right">سطح نیاز</th>
+                <th scope="col" class="px-6 py-3 text-right">نوع خانوار</th>
+                <th scope="col" class="px-6 py-3 text-right">آدرس</th>
+                <th scope="col" class="px-6 py-3 text-right">کدپستی</th>
+                <th scope="col" class="px-6 py-3 text-right">شماره تماس</th>
+                <th scope="col" class="px-6 py-3 text-center no-print">عملیات</th>
+            </tr>
+        </thead>
+        <tbody class="table-content">
+            {% for family in families %}
+            <tr class="{% if forloop.counter|divisibleby:2 %}bg-white{% else %}bg-indigo-50{% endif %} border-b border-gray-200 hover:bg-gray-50 vazir-normal">
+                <th scope="row" class="px-4 py-1 font-medium text-gray-900 whitespace-nowrap">{{ family.doc_code }}</th>
+                <td>{{ family.guardian }}</td>
+                <td>{{ family.get_need_level_display }}</td>
+                <td>{{ family.family_type }}</td>
+                <td>{{ family.address }}</td>
+                <td>{{ family.postal_code }}</td>
+                <td>{{ family.contact_number }}</td>
+                <td class="no-print text-center border-r">
+                    <div class="flex space-x-1">
+                        <a href="{% url 'family_update' family.pk %}" class="text-blue-700 text-sm">
+                            <svg class="w-6 h-6 text-blue-700" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z" />
+                            </svg>
+                        </a>
+                        <a href="#" onclick="openModal()" class="text-green-700 text-sm">
+                            <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M11 9a1 1 0 1 1 2 0 1 1 0 0 1-2 0Z"/>
+                                <path fill-rule="evenodd" d="M9.896 3.051a2.681 2.681 0 0 1 4.208 0c.147.186.38.282.615.255a2.681 2.681 0 0 1 2.976 2.975.681.681 0 0 0 .254.615 2.681 2.681 0 0 1 0 4.208.682.682 0 0 0-.254.615 2.681 2.681 0 0 1-2.976 2.976.681.681 0 0 0-.615.254 2.682 2.682 0 0 1-4.208 0 .681.681 0 0 0-.614-.255 2.681 2.681 0 0 1-2.976-2.975.681.681 0 0 0-.255-.615 2.681 2.681 0 0 1 0-4.208.681.681 0 0 0 .255-.615 2.681 2.681 0 0 1 2.976-2.975.681.681 0 0 0 .614-.255ZM12 6a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z" clip-rule="evenodd"/>
+                                <path d="M5.395 15.055 4.07 19a1 1 0 0 0 1.264 1.267l1.95-.65 1.144 1.707A1 1 0 0 0 10.2 21.1l1.12-3.18a4.641 4.641 0 0 1-2.515-1.208 4.667 4.667 0 0 1-3.411-1.656Zm7.269 2.867 1.12 3.177a1 1 0 0 0 1.773.224l1.144-1.707 1.95.65A1 1 0 0 0 19.915 19l-1.32-3.93a4.667 4.667 0 0 1-3.4 1.642 4.643 4.643 0 0 1-2.53 1.21Z"/>
+                            </svg>
+                        </a>
+                        <div id="myModal" class="modal-overlay">
+                            <div class="modal-content bg-gray-700">
+                            <p class="cancel-modal-1" onclick="closeModal()">X</p>
+                            <div class="modal-header">یک عملیات را انتخاب کنید</div>
+                            <div class="modal-body">
+                                <p>حذف یا انتقال لیست خانواده از لیست توزیع؟</p>
+                            </div>
+                            <div class="modal-footer">
+
+                                <a href="{% url 'list_dist_for_transfer' dist.pk family.pk %}"><button type="submit" class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" onclick="confirmAction()">بله، اطمینان دارم.</button></a>
+                                <a href="{% url 'remove_family_from_dist' dist.pk family.pk %}"><button class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 " onclick="closeModal()">حذف خانواده</button></a>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
+
+
+
+<script>
+    const modal = document.getElementById("myModal");
+
+function openModal() {
+    modal.style.display = "flex";
+}
+
+function closeModal() {
+    modal.style.display = "none";
+}
+
+function confirmAction() {
+    closeModal();
+}
+</script>
   {% endblock %}

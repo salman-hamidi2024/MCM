@@ -12,7 +12,7 @@
  
 <div class="relative overflow-x-auto sm:rounded-lg border-none border-gray-700">
 <table style="width: 90%;margin: auto;" class="w-full text-sm rtl:text-right text-gray-700 bg-white rounded-lg overflow-hidden"> 
-        <thead class="text-xs text-gray-700 uppercase bg-gray-700 text-white">  
+<thead class="text-xs text-gray-700 uppercase bg-gray-700 text-white">  
     <tr class='vazir-semibold'>  
         <th scope="col" class="px-6 py-3 text-end">نامه بسته حمایتی</th>  
         <th scope="col" class="px-6 py-3 text-right">ظرفیت بسته حمایتی</th>
@@ -25,7 +25,7 @@
 </thead>
 <tbody class="table-content">  
     {% for package in packages %}  
-    <tr class="{% if forloop.counter|divisibleby:2 %}bg-white{% else %}bg-indigo-50{% endif %} border-b border-gray-200 hover:bg-gray-50  vazir-normal">  
+    <tr class="{% cycle 'bg-white' 'bg-indigo-50' %} border-b border-gray-200 hover:bg-gray-50 vazir-normal">  
         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">{{ package.name }}</th>  
         <td class="px-6 py-4">{{ package.max_members }}</td>
         <td class="px-6 py-4">{{ package.cost }}</td>

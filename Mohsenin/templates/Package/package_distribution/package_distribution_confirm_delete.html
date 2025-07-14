@@ -1,0 +1,22 @@
+{% extends "base.html" %}  
+
+{% block content %}  
+
+
+<div style="justify-content: center;margin-top: 5rem;" class="flex">
+    <div class="bg-white shadow-lg rounded-lg p-6 w-86">
+        <h2 class="vazir-semibold text-2xl">آیا از حذف این توزیع مطمئن هستید؟</h2>
+
+        <h3 class="vazir-medium text-xl">بسته: {{ package_distribution.package.name }}</h3>
+        <h3 class="vazir-medium text-xl">خانواده: {{ package_distribution.family }}</h3>
+
+        <form class="confirm-delete-form" method="post">
+            {% csrf_token %}
+            <div class="">
+                <button type="submit" class="custom-button cursor-pointer text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">بله اطمینان دارم</button>
+                <a href="{% url 'package_detail' package_distribution.package.pk %}"><button type="button" class="cursor-pointer text-white bg-red-800 hover:bg-red-900 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 ">انصراف</button></a>
+            </div>
+        </form>  
+    </div>
+</div>
+{% endblock %} 
