@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'jalali_date',
+    'rest_framework',
 
     # My Apps
     'Mohsenin',

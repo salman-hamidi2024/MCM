@@ -168,27 +168,11 @@ def support_create(request, person_id=None):
 # Detail View for a Specific Supporter
 def supporter_detail(request, pk):
     supporter = get_object_or_404(Supporter, pk=pk)
-    supports = Support.objects.all()
-    
-    searched_person = None
-    if request.method == 'POST':
-        national_id = request.POST.get('national_id', '').strip()
-        if not national_id:
-            messages.error(request, 'لطفاً کد ملی را وارد کنید.')
-        else:
-            searched_person = Person.objects.filter(national_id__iexact=national_id).first()
-            if not searched_person:
-                messages.error(request, 'شخصی با این کد ملی یافت نشد.')
-            elif supporter.supports_orphans_only and not searched_person.is_orphan:
-                messages.error(request, 'این حامی فقط از یتیمان حمایت می‌کند.')
-                searched_person = None  # برای جلوگیری از نمایش شخص غیرمجاز
-            else:
-                messages.success(request, 'شخص با موفقیت پیدا شد.')
+    supports = Support.objects.filter(supporter=supporter)
 
     context = {
         'supporter': supporter,
         'supports': supports,
-        'searched_person': searched_person,
     }
     return render(request, 'support/supporter_detail.html', context)
 
@@ -228,3 +212,8 @@ def supporter_deactivate(request, pk):
         'supporter': supporter,
     }
     return render(request, 'support/supporter_confirm_deactivate.html', context)
+
+
+
+def choose_kid_support(request):
+    return render(request, "Support/support_form.html")

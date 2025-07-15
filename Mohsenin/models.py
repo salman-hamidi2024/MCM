@@ -134,7 +134,7 @@ class Support(models.Model):
     supporter = models.ForeignKey(Supporter, related_name='supports', on_delete=models.CASCADE)  
     person = models.ForeignKey(Person, related_name='supportings', on_delete=models.CASCADE)  
     support_date = models.DateField('تاریخ حمایت', auto_now_add=True)  
-    amount = models.DecimalField('مبلغ حمایت', max_digits=10, decimal_places=2)  # Adjust as needed  
+    amount = models.DecimalField('مبلغ حمایت', max_digits=10, decimal_places=0)  # Adjust as needed  
     is_active = models.BooleanField('فعال', default=True)  
 
     def __str__(self):  

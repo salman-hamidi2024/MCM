@@ -13,75 +13,45 @@
             <div><strong>ایمیل:</strong> {{ supporter.email }}</div>
             <div><strong>وضعیت:</strong> {{ supporter.is_active }}</div>
         </div>
+        <div class="detail-buttons flex rounded-md vazir-normal no-print" role="group">
+        <a href="{% url 'supporter-update' supporter.pk %}">
+          <button type="button" class="cursor-pointer px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-700 focus:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-500 dark:focus:text-white">ویرایش حامی</button>
+        </a>
+        <a href="{% url 'support-deactivate' supporter.pk %}">
+          <button type="button" class="cursor-pointer px-4 py-2 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-gray-700 focus:z-10 focus:ring-2 focus:ring-gray-700 focus:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-500 dark:focus:text-white">غیر فعال کردن حامی</button>
+        </a>
+
+        <a href="{% url 'supporter-list' %}">
+          <button type="button" class="cursor-pointer px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 focus:z-10 focus:ring-2 focus:ring-gray-700 focus:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-500 dark:focus:text-white">برگشت به لیست حامی ها</button>
+        </a>
+      </div>
         
     </div>
 </div>
+<div class="py-5 vazir-medium no-print">
+  <a href=""><button type="button" class="custom-button cursor-pointer text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">افزودن کودک جدید</button></a>
+</div>
+<div class="flex m-4">
+  <h3 class="font-bold text-gray-900">لیست کودکان حمایت‌ شده:</h3>
+</div>
 
-<div class="mt-8">
-
-  <div class="w-96 mx-auto p-6 bg-white rounded-xl shadow-md space-y-6">
+ <div class="grid grid-cols-1 mt-4 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {% for support in supports %}
+      {% comment %} <div class="border-b border-gray-200 py-2">
+        <a href="{% url 'transfer_family_to_dist' dist.pk family.pk %}" class="text-blue-600 hover:underline">انتقال به {{ dist.name }}</a>
+      </div> {% endcomment %}
+            <!-- Card 1 -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl text-center font-semibold text-gray-800 mb-3 vazir-bold">{{ support.person }}</h3>
+                <div class="grid grid-cols-1 gap-y-3 text-gray-700 vazir-normal">
+                    <div><li><strong> مبلغ:</strong> {{ support.amount }}</li></div>
+                    <div><li><strong> تاریخ:</strong> {{ support.support_date }}</li></div>
+                </div>
+            
+            {% endfor %}
+        </div>
   
-    <!-- فرم جستجوی کودک -->
-    <div class="space-y-4">
-      <h2 class="vazir-normal text-base font-medium text-gray-900">جستجوی کودک بر اساس شماره ملی</h2>
-      <form method="post" action="{% url 'support-create' %}" class="flex flex-col gap-4">
-        {% csrf_token %}
-        <input type="hidden" name="supporter" value="{{ supporter.pk }}">
-        <input type="hidden" name="is_active" value="true">
-  
-        <input type="text" id="search-national-id" name="national_id"
-               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2"
-               placeholder="مثال: 3612345679" required>
-  
-        <button type="submit"
-                class="custom-button self-start text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5">
-          جستجو
-        </button>
-      </form>
-    </div>
-  
-    <!-- نتایج جستجو -->
-    <div class="bg-gray-50 p-4 rounded-md border">
-      <h3 class="font-bold text-gray-800 mb-2">نتایج جستجو:</h3>
-      {% if searched_person %}
-        <p>کودک پیدا شد: <strong>{{ searched_person }}</strong></p>
-        <form method="post" action="{% url 'support-create' %}" class="mt-3">
-          {% csrf_token %}
-          <input type="hidden" name="supporter" value="{{ supporter.pk }}">
-          <input type="hidden" name="person" value="{{ searched_person.pk }}">
-          <input type="hidden" name="amount" value="1000000">
-          <input type="hidden" name="is_active" value="true">
-          <button type="submit"
-                  class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5">
-            اضافه کردن به حمایت
-          </button>
-        </form>
-      {% else %}
-        <p class="text-600">کودکی با شماره ملی مورد نظر یافت نشد.</p>
-      {% endif %}
-    </div>
-  
-    <!-- لیست کودکان حمایت‌شده -->
-    <div class="space-y-2">
-      <h3 class="font-bold text-gray-900">لیست کودکان حمایت‌شده:</h3>
-      <ul class="list-disc list-inside space-y-1 text-gray-700">
-        {% for support in supporter.supports.all %}
-          <li>
-            {{ support.person }} - مبلغ: {{ support.amount|intcomma }} تومان | تاریخ: {{ support.support_date }}
-          </li>
-        {% empty %}
-          <li class="text-gray-500">هیچ حمایتی ثبت نشده است.</li>
-        {% endfor %}
-      </ul>
-    </div>
-  
-    <!-- دکمه بازگشت -->
-    <div class="text-center pt-4">
-      <a href="{% url 'supporter-list' %}"
-         class="inline-block text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-6 py-2.5">
-        بازگشت به لیست حامیان
-      </a>
-    </div>
+    
   
   </div>
 </div>
