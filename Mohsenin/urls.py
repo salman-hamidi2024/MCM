@@ -60,7 +60,8 @@ urlpatterns = [
     path('supporter/<int:pk>/update/', supportviews.supporter_update, name='supporter-update'),
     path('support/<int:person_id>/', supportviews.support_list, name='support-list'),  
     path('supporter/<int:pk>/deactivate', supportviews.supporter_deactivate, name="support-deactivate"),
-    path('support/new/', supportviews.support_create, name='support-create'),  
+    path('support/new/', supportviews.support_create, name='support-create'),
+    path("add-kid_to_supporter/<int:pk>/", supportviews.choose_kid_support, name="add-kid_to_supporter"),
 
 
     #------- family type

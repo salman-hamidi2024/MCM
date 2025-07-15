@@ -4,19 +4,20 @@
 
 <div class="flex-1 pr-5">
     <div style="margin-top: 20px; margin-left: 20px;">
-    <div class="flex m-4">
-        <h2 class="text-lg font-semibold text-gray-800 mb-4 vazir-bold">ثبت کودک برای حمایت</h2>
+    <div class="flex flex-col m-4 items-center">
+        <h2 class="text-lg font-semibold text-gray-800 mb-4 vazir-bold">ثبت حمایت کودک برای حامی : {{ supporter.name }}</h2>
     </div>
       
     <div class="grid grid-cols-1 mt-4 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    {% for kid in kids %}
+    {% for person in persones %}
+            
             <div class="bg-white rounded-lg shadow-md p-6">
-                <h3 class="text-xl text-center font-semibold text-gray-800 mb-3 vazir-bold">{{ kid.firsname }} {{ lastname }}</h3>
+                <h3 class="text-xl text-center font-semibold text-gray-800 mb-3 vazir-bold">{{ person.first_name }} {{ person.last_name }}</h3>
                 <div class="grid grid-cols-1 gap-y-3 text-gray-700 vazir-normal">
-                    <div><strong>خانواده:</strong>{{ kid.family }}</div>
-                    <div><strong>خانواده:</strong>{{ kid.father_name }}</div>
-                    <div><strong>تولد:</strong> {{ kid.birth_date }}</div>
-                    <div><strong>کد ملی:</strong> {{ kid.national_id }}</div>
+                    <div><strong>خانواده:</strong>{{ person.family }}</div>
+                    <div><strong>خانواده:</strong>{{ person.father_name }}</div>
+                    <div><strong>تولد:</strong> {{ person.birth_date }}</div>
+                    <div><strong>کد ملی:</strong> {{ person.national_id }}</div>
                 </div>
                 <div class="flex gap-2 mt-4 vazir-normal no-print" role="group">
                     <a href="#">
@@ -24,7 +25,8 @@
                             ثبت
                         </button>
                     </a>
-                    
+
+
                 </div>
             </div>
             {% endfor %}

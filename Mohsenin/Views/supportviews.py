@@ -215,5 +215,12 @@ def supporter_deactivate(request, pk):
 
 
 
-def choose_kid_support(request):
-    return render(request, "Support/support_form.html")
+def choose_kid_support(request, pk):
+    supporter = get_object_or_404(Supporter, pk=pk)
+    persones = Person.objects.all()
+
+    context = {
+        'supporter': supporter,
+        'persones': persones,
+    }
+    return render(request, "Support/Support_List.html", context)
